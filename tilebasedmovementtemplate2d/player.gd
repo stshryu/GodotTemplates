@@ -5,6 +5,8 @@ extends CharacterBody2D
 const TILE_SIZE: int = 8.0
 
 @onready var player_sprite = $Sprite2D
+@onready var player_ray = $PlayerRaycast
+@onready var raycast_list: Array
 
 enum PlayerState { IDLE, TURNING, MOVING }
 enum FacingDirection { LEFT, RIGHT, UP, DOWN }
@@ -73,3 +75,26 @@ func finished_turning() -> void:
 func move(delta: float) -> void:
 	var next_step = input_dir * TILE_SIZE / 2
 	
+	for ray in raycast_list:
+		ray.target_position = next_step
+		ray.force_raycast_update()
+
+	if !player_ray.is_colliding():
+		percent_moved += walk_speed * delta
+		if percent_moved >= 0.99:
+			position = init_pos + (TILE_SIZE * input_dir)
+			percent_moved = 0.0
+			is_moving = false
+		else:
+			position = init_pos + (TILE_SIZE * input_dir * percent_moved)
+	else:
+		var colliding_rays = raycast_list.filter(func(ray): return ray.is_colliding())
+		_raycast_logic(colliding_rays)
+
+		# No matter what set movement to false if colliding
+		is_moving = false
+		
+func _raycast_logic(rays: Array) -> void:
+	for ray in rays:
+		if ray.name == "PlayerRaycast":
+			var player_target = player_ray.get_collider()

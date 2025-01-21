@@ -21,3 +21,5 @@ texture = ExtResource("2_2itx6")
 offset = Vector2(8, 8)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="PlayerRaycast" type="RayCast2D" parent="Player"]
