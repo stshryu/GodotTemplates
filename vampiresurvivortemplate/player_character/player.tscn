@@ -19,3 +19,5 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_xbshb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
