@@ -4,7 +4,6 @@ signal gameover
 
 @export var player_speed = 100
 @export var default_health = 100.0
-@export var damage_rate = 5.0
 
 @onready var current_health = default_health
 @onready var hurtbox = %HurtBox
@@ -20,7 +19,9 @@ func _physics_process(delta):
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
-		current_health -= damage_rate * overlapping_mobs.size() * delta
+		for mob in overlapping_mobs:
+			if "damage_rate" in mob:
+				current_health -= mob.damage_rate * delta
 		playerhealthbar.value = current_health
 		if current_health <= 0.0:
 			gameover.emit()
