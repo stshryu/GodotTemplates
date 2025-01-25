@@ -1,23 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddfcl58tgwsj7"]
+[gd_scene load_steps=8 format=3 uid="uid://ddfcl58tgwsj7"]
 
 [ext_resource type="Script" path="res://player_character/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
+[ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/bow.tscn" id="3_xfu64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kby48"]
 size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xjrc"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2ssn"]
+bg_color = Color(0, 0.87451, 0.203922, 1)
 
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 4294901760
 script = ExtResource("1_kdeeh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, 8)
 texture = ExtResource("1_u1w1f")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_xbshb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Bow" parent="." instance=ExtResource("3_xfu64")]
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_kby48")
+debug_color = Color(0.992564, 0, 0.250253, 0.42)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = -8.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8xjrc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l2ssn")
+value = 100.0
+show_percentage = false

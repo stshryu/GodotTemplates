@@ -20,10 +20,13 @@ position = Vector2(120, 56)
 position = Vector2(62, 31)
 
 [node name="Bear2" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(64, 119)
+position = Vector2(200, 104)
 
 [node name="Bear3" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(206, 19)
+position = Vector2(208, 48)
 
 [node name="Bear4" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(186, 104)
+position = Vector2(104, 144)
+
+[node name="Bear5" parent="." instance=ExtResource("2_6hgkn")]
+position = Vector2(24, 96)

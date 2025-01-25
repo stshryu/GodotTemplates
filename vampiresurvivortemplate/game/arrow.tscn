@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1lldn02g0tlb"]
+
+[ext_resource type="Script" path="res://game/arrow.gd" id="1_a707m"]
+[ext_resource type="Texture2D" uid="uid://28kqojmmp13b" path="res://art/Arrow.png" id="1_fmsb5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8xna"]
+radius = 4.0
+
+[node name="Arrow" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_a707m")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(-3, 0)
+texture = ExtResource("1_fmsb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y8xna")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
