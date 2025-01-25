@@ -1,6 +1,6 @@
 extends Area2D
 
-const ARROW = preload("res://game/arrow.tscn")
+const ARROW = preload("res://game/ammo/arrow/arrow.tscn")
 
 func _physics_process(delta):
 	var enemies_in_range = get_overlapping_bodies()

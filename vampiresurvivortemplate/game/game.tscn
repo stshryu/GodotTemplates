@@ -1,32 +1,41 @@
 [gd_scene load_steps=4 format=3 uid="uid://bff3m3vh3yae1"]
 
-[ext_resource type="Texture2D" uid="uid://spfulw7ln4du" path="res://art/TilesetLogic.png" id="1_sfegw"]
 [ext_resource type="PackedScene" uid="uid://ddfcl58tgwsj7" path="res://player_character/player.tscn" id="1_y6yuw"]
-[ext_resource type="PackedScene" uid="uid://b5ocuqkund6tp" path="res://enemies/bear.tscn" id="2_6hgkn"]
+[ext_resource type="Script" path="res://game/game.gd" id="1_yi5op"]
+
+[sub_resource type="Curve2D" id="Curve2D_5eoh7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -48, -96, 0, 0, 0, 0, -48, 232, 0, 0, 0, 0, 384, 232, 0, 0, 0, 0, 384, -96, 0, 0, 0, 0, -48, -96)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_yi5op")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_left = 64.0
-offset_top = 8.0
-offset_right = 192.0
-offset_bottom = 168.0
-texture = ExtResource("1_sfegw")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+offset_left = -32.0
+offset_top = -88.0
+offset_right = 368.0
+offset_bottom = 212.0
 
 [node name="Player" parent="." instance=ExtResource("1_y6yuw")]
 position = Vector2(120, 56)
 
-[node name="Bear" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(62, 31)
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-120, -56)
+curve = SubResource("Curve2D_5eoh7")
 
-[node name="Bear2" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(200, 104)
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-48, -96)
+rotation = 1.5708
 
-[node name="Bear3" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(208, 48)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
-[node name="Bear4" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(104, 144)
-
-[node name="Bear5" parent="." instance=ExtResource("2_6hgkn")]
-position = Vector2(24, 96)
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ocuqkund6tp"]
+[gd_scene load_steps=6 format=3 uid="uid://b5ocuqkund6tp"]
 
 [ext_resource type="Texture2D" uid="uid://c1by25t6rpeet" path="res://art/BearSpriteSheet.png" id="1_ker65"]
-[ext_resource type="Script" path="res://enemies/bear.gd" id="1_n81h1"]
+[ext_resource type="Script" path="res://enemies/bear/bear.gd" id="1_n81h1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo0lc"]
 size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awmdv"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26wxy"]
+bg_color = Color(0, 0.87451, 0.203922, 1)
 
 [node name="Bear" type="CharacterBody2D"]
 collision_layer = 2
@@ -21,3 +27,12 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_jo0lc")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_top = -4.0
+offset_right = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_awmdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_26wxy")
+value = 100.0
+show_percentage = false

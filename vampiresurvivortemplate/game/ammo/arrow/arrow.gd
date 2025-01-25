@@ -2,6 +2,8 @@ extends Area2D
 
 @export var arrow_speed = 300
 @export var max_travel_dist = 1000
+@export var damage = 50
+@export var pierce = 1
 
 var traveled_distance = 0
 
@@ -14,6 +16,8 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_body_entered(body):
-	queue_free()
+	if pierce <= 0:
+		queue_free()
+	pierce -= 1
 	if body.has_method("take_damage"):
-		body.take_damage()
+		body.take_damage(damage)
