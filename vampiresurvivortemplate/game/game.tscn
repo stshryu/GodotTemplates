@@ -14,9 +14,6 @@ script = ExtResource("1_yi5op")
 
 [node name="Player" parent="." instance=ExtResource("1_y6yuw")]
 position = Vector2(224, 160)
-player_speed = 100
-default_health = 100.0
-damage_rate = 5.0
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-120, -56)

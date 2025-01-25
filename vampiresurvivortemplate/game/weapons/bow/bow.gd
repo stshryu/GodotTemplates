@@ -3,6 +3,13 @@ extends Area2D
 const ARROW = preload("res://game/ammo/arrow/arrow.tscn")
 
 func _physics_process(delta):
+	manual_aim()
+	#auto_aim()
+
+func manual_aim():
+	rotation += get_local_mouse_position().angle()
+	
+func auto_aim():
 	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
 		var target_enemy = enemies_in_range.front()
