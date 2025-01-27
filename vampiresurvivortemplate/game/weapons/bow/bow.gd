@@ -1,6 +1,6 @@
 extends Area2D
 
-const ARROW = preload("res://game/ammo/arrow/arrow.tscn")
+const ammo = preload("res://game/Ammo/ammo.tscn")
 
 func _physics_process(delta):
 	manual_aim()
@@ -16,10 +16,14 @@ func auto_aim():
 		look_at(target_enemy.global_position)
 
 func shoot():
-	var new_arrow = ARROW.instantiate()
-	new_arrow.global_position = %BulletSpawnPoint.global_position
-	new_arrow.global_rotation = %BulletSpawnPoint.global_rotation
-	%BulletSpawnPoint.add_child(new_arrow)
+	var new_ammo = ammo.instantiate()
+	new_ammo.global_position = %BulletSpawnPoint.global_position
+	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
+	var damage_strat = DamageAmmoStrategy.new()
+	damage_strat.apply_upgrade(new_ammo)
+	var pierce_strat = PierceAmmoStrategy.new()
+	pierce_strat.apply_upgrade(new_ammo)
+	%BulletSpawnPoint.add_child(new_ammo)
 
 func _on_timer_timeout():
 	shoot()
