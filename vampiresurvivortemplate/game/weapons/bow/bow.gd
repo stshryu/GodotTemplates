@@ -1,11 +1,30 @@
+class_name BaseBow
 extends Area2D
 
 const ammo = preload("res://game/Ammo/ammo.tscn")
 
-func _physics_process(delta):
-	manual_aim()
-	#auto_aim()
+var ammo_modifiers: Array[BaseAmmoStrategy] = []
+var default_modifiers: Dictionary = {
+	"AddProperties": {},
+	"MultiProperties": {}
+}
+var bow_modifiers: ModifierParams
 
+func _ready():
+	init_modifier_systems()
+	load_weapon_modifiers()
+
+func init_modifier_systems():
+	ammo_modifiers = [
+		DamageAmmoStrategy.new(),
+		MaxDistAmmoStrategy.new(),
+		PierceAmmoStrategy.new(),
+		SpeedAmmoStrategy.new()
+	]
+
+func load_weapon_modifiers():
+	bow_modifiers = ModifierParams.new(default_modifiers)
+	
 func manual_aim():
 	rotation += get_local_mouse_position().angle()
 	
@@ -19,11 +38,13 @@ func shoot():
 	var new_ammo = ammo.instantiate()
 	new_ammo.global_position = %BulletSpawnPoint.global_position
 	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
-	var damage_strat = DamageAmmoStrategy.new()
-	damage_strat.apply_upgrade(new_ammo)
-	var pierce_strat = PierceAmmoStrategy.new()
-	pierce_strat.apply_upgrade(new_ammo)
+	for strategy in ammo_modifiers:
+		strategy.apply_upgrade(new_ammo, bow_modifiers)
 	%BulletSpawnPoint.add_child(new_ammo)
+
+func _physics_process(delta):
+	manual_aim()
+	#auto_aim()
 
 func _on_timer_timeout():
 	shoot()

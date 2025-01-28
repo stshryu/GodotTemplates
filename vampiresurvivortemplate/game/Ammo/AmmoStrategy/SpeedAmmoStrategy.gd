@@ -1,5 +1,7 @@
 class_name SpeedAmmoStrategy
 extends BaseAmmoStrategy
 
-func apply_upgrade(ammo: Ammo, modifier_params: Dictionary = {}):
-	ammo.proj_speed += 500
+@export var key: String = "speed"
+
+func apply_upgrade(ammo: Ammo, modifier_params: ModifierParams):
+	pass

@@ -1,6 +1,7 @@
 class_name MaxDistAmmoStrategy
 extends BaseAmmoStrategy
 
-func apply_upgrade(ammo: Ammo, modifier_params: Dictionary = {}):
-	ammo.max_travel_dist += 500
-	
+@export var key: String = "max_dist"
+
+func apply_upgrade(ammo: Ammo, modifier_params: ModifierParams):
+	pass
