@@ -13,6 +13,7 @@ signal upgrade_picked_up
 
 func _ready():
 	playerhealthbar.max_value = default_health
+	_display_weapon_stats()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -30,3 +31,20 @@ func _physics_process(delta):
 
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	upgrade_picked_up.emit(ammo_strategy)
+	_display_weapon_stats()
+
+func _display_weapon_stats():
+	var weapon = %Bow
+	var ammo = %Bow.ammo
+	var new_ammo = ammo.instantiate()
+	for strategy in weapon.ammo_modifiers:
+		strategy.apply_upgrade(new_ammo)
+	var dmg = "Damage: %s\n"
+	var travel = "Travel: %s\n"
+	var speed = "Speed: %s\n"
+	var pierce = "Pierce: %s\n"
+	%PlayerStats.text = ""
+	%PlayerStats.append_text(dmg % str(new_ammo.damage))
+	%PlayerStats.append_text(travel % str(new_ammo.max_travel_dist))
+	%PlayerStats.append_text(speed % str(new_ammo.proj_speed))
+	%PlayerStats.append_text(pierce % str(new_ammo.pierce))

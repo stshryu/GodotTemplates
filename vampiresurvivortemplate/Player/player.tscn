@@ -31,6 +31,7 @@ shape = SubResource("RectangleShape2D_xbshb")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Bow" parent="." instance=ExtResource("3_xfu64")]
+unique_name_in_owner = true
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -51,5 +52,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_8xjrc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_l2ssn")
 value = 100.0
 show_percentage = false
+
+[node name="PlayerStats" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 23.0
+offset_top = -41.0
+offset_right = 294.0
+offset_bottom = 44.0
+theme_override_font_sizes/normal_font_size = 5
 
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
