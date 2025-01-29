@@ -1,6 +1,8 @@
+class_name Player
 extends CharacterBody2D
 
 signal gameover
+signal upgrade_picked_up
 
 @export var player_speed = 100
 @export var default_health = 100.0
@@ -25,4 +27,6 @@ func _physics_process(delta):
 		playerhealthbar.value = current_health
 		if current_health <= 0.0:
 			gameover.emit()
-	
+
+func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
+	upgrade_picked_up.emit(ammo_strategy)

@@ -1,5 +1,8 @@
 class_name BaseAmmoStrategy
 extends Resource
 
-func apply_upgrade(ammo: Ammo, modifier_params: ModifierParams): 
+@export var name: String = "DEFAULT"
+@export var texture: Texture2D
+
+func apply_upgrade(ammo: Ammo): 
 	pass

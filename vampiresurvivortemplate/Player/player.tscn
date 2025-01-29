@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddfcl58tgwsj7"]
 
-[ext_resource type="Script" path="res://player_character/player.gd" id="1_kdeeh"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
-[ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/weapons/bow/bow.tscn" id="3_xfu64"]
+[ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/Weapons/Bow/bow.tscn" id="3_xfu64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
 size = Vector2(14, 14)
@@ -51,3 +51,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_8xjrc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_l2ssn")
 value = 100.0
 show_percentage = false
+
+[connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]

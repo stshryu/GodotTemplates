@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk6tf1huuek6h"]
+
+[ext_resource type="Script" path="res://upgrade.gd" id="1_be7d1"]
+[ext_resource type="Texture2D" uid="uid://spfulw7ln4du" path="res://art/TilesetLogic.png" id="2_t7ga5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql6y3"]
+
+[node name="Upgrades" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
+script = ExtResource("1_be7d1")
+upgrade_label = NodePath("UpgradeLabel")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ql6y3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t7ga5")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="UpgradeLabel" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = -9.0

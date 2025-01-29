@@ -4,26 +4,9 @@ extends Area2D
 const ammo = preload("res://game/Ammo/ammo.tscn")
 
 var ammo_modifiers: Array[BaseAmmoStrategy] = []
-var default_modifiers: Dictionary = {
-	"AddProperties": {},
-	"MultiProperties": {}
-}
-var bow_modifiers: ModifierParams
 
 func _ready():
-	init_modifier_systems()
-	load_weapon_modifiers()
-
-func init_modifier_systems():
-	ammo_modifiers = [
-		DamageAmmoStrategy.new(),
-		MaxDistAmmoStrategy.new(),
-		PierceAmmoStrategy.new(),
-		SpeedAmmoStrategy.new()
-	]
-
-func load_weapon_modifiers():
-	bow_modifiers = ModifierParams.new(default_modifiers)
+	pass
 	
 func manual_aim():
 	rotation += get_local_mouse_position().angle()
@@ -39,7 +22,7 @@ func shoot():
 	new_ammo.global_position = %BulletSpawnPoint.global_position
 	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
 	for strategy in ammo_modifiers:
-		strategy.apply_upgrade(new_ammo, bow_modifiers)
+		strategy.apply_upgrade(new_ammo)
 	%BulletSpawnPoint.add_child(new_ammo)
 
 func _physics_process(delta):
@@ -48,3 +31,6 @@ func _physics_process(delta):
 
 func _on_timer_timeout():
 	shoot()
+
+func _on_player_upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
+	ammo_modifiers.append(ammo_strategy)
