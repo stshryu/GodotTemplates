@@ -20,6 +20,7 @@ script = ExtResource("1_yi5op")
 
 [node name="Upgrades" parent="." instance=ExtResource("2_smg8y")]
 position = Vector2(176, 160)
+upgrade_name = "Damage"
 ammo_strategy = SubResource("Resource_ml3ov")
 
 [node name="Player" parent="." instance=ExtResource("1_y6yuw")]
