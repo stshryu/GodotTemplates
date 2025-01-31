@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk6tf1huuek6h"]
+[gd_scene load_steps=3 format=3 uid="uid://bk6tf1huuek6h"]
 
-[ext_resource type="Script" path="res://upgrade.gd" id="1_be7d1"]
-[ext_resource type="Texture2D" uid="uid://spfulw7ln4du" path="res://art/TilesetLogic.png" id="2_t7ga5"]
+[ext_resource type="Script" path="res://game/Upgrades/upgrade.gd" id="1_be7d1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ql6y3"]
 
@@ -14,8 +13,6 @@ sprite = NodePath("Sprite2D")
 shape = SubResource("CircleShape2D_ql6y3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_t7ga5")
-region_enabled = true
 region_rect = Rect2(16, 16, 16, 16)
 
 [node name="UpgradeLabel" type="Label" parent="."]

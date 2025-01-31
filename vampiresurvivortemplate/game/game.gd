@@ -6,6 +6,7 @@ extends Node2D
 var enemylist = []
 
 func _ready():
+	get_window().content_scale_factor = 2
 	find_all_enabled_enemies()
 	
 func find_all_enabled_enemies():

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PierceAmmoStrategy" load_steps=3 format=3 uid="uid://c4e82ayeiwn2g"]
+
+[ext_resource type="Script" path="res://game/Ammo/AmmoStrategy/PierceAmmoStrategy.gd" id="1_5iv3y"]
+[ext_resource type="Texture2D" uid="uid://cvcb7vn2g83mg" path="res://art/ScrollThunder.png" id="2_kreas"]
+
+[resource]
+script = ExtResource("1_5iv3y")
+name = "Pierce"
+texture = ExtResource("2_kreas")

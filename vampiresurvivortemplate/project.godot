@@ -18,4 +18,3 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/aspect="expand"
-window/stretch/scale=4.0
