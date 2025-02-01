@@ -11,6 +11,8 @@ signal upgrade_picked_up
 @onready var hurtbox = %HurtBox
 @onready var playerhealthbar = %HealthBar
 
+var player_upgrades: Array[BaseAmmoStrategy] = []
+
 func _ready():
 	playerhealthbar.max_value = default_health
 	_display_weapon_stats()
@@ -30,7 +32,8 @@ func _physics_process(delta):
 			gameover.emit()
 
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
-	upgrade_picked_up.emit(ammo_strategy)
+	player_upgrades.append(ammo_strategy)
+	upgrade_picked_up.emit(player_upgrades)
 	_display_weapon_stats()
 
 func _display_weapon_stats():

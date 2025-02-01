@@ -32,5 +32,5 @@ func _physics_process(delta):
 func _on_timer_timeout():
 	shoot()
 
-func _on_player_upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
-	ammo_modifiers.append(ammo_strategy)
+func _on_player_upgrade_picked_up(player_upgrades: Array[BaseAmmoStrategy]):
+	ammo_modifiers = player_upgrades
