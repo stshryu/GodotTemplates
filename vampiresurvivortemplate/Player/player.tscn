@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
-[ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/Weapons/Bow/bow.tscn" id="3_xfu64"]
-[ext_resource type="PackedScene" uid="uid://jgtkvontip7r" path="res://game/Weapons/Sword/sword.tscn" id="4_lkv4n"]
+[ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/weapons/bow/bow.tscn" id="3_xfu64"]
+[ext_resource type="PackedScene" uid="uid://jgtkvontip7r" path="res://game/weapons/sword/sword.tscn" id="4_lkv4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
 size = Vector2(14, 14)
