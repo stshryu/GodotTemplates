@@ -18,7 +18,7 @@ func _ready():
 	_display_weapon_stats()
 
 func _physics_process(delta):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * player_speed
 	move_and_slide()
 	
@@ -36,18 +36,32 @@ func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	upgrade_picked_up.emit(player_upgrades)
 	_display_weapon_stats()
 
-func _display_weapon_stats():
+func _display_weapon_stats(): # Move this into the debug scripts when we modularize weapons and weapon pickups
 	var weapon = %Bow
 	var ammo = %Bow.ammo
 	var new_ammo = ammo.instantiate()
 	for strategy in weapon.ammo_modifiers:
 		strategy.apply_upgrade(new_ammo)
+	var sword = %Sword
+	var swordammo = %Sword.ammo
+	var newswordammo = swordammo.instantiate()
+	for strategy in sword.ammo_modifiers:
+		strategy.apply_upgrade(newswordammo)
 	var dmg = "Damage: %s\n"
 	var travel = "Travel: %s\n"
 	var speed = "Speed: %s\n"
 	var pierce = "Pierce: %s\n"
+	new_ammo._ready()
+	newswordammo._ready()
 	%PlayerStats.text = ""
+	%PlayerStats.append_text("Bow:\n")
 	%PlayerStats.append_text(dmg % str(new_ammo.damage))
 	%PlayerStats.append_text(travel % str(new_ammo.max_travel_dist))
 	%PlayerStats.append_text(speed % str(new_ammo.proj_speed))
 	%PlayerStats.append_text(pierce % str(new_ammo.pierce))
+	%PlayerStats.append_text("Sword:\n")
+	%PlayerStats.append_text(dmg % str(newswordammo.damage))
+	%PlayerStats.append_text(travel % str(newswordammo.max_travel_dist))
+	%PlayerStats.append_text(speed % str(newswordammo.proj_speed))
+	%PlayerStats.append_text(pierce % str(newswordammo.pierce))
+	

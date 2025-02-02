@@ -1,12 +1,9 @@
-class_name BaseBow
+class_name BaseSword
 extends Area2D
 
-const ammo = preload("res://game/Ammo/BowAmmo/BowAmmo.tscn")
+const ammo = preload("res://game/Ammo/SwordAmmo/SwordAmmo.tscn")
 
 var ammo_modifiers: Array[BaseAmmoStrategy] = []
-
-func _ready():
-	pass
 	
 func manual_aim():
 	rotation += get_local_mouse_position().angle()
@@ -20,14 +17,15 @@ func auto_aim():
 func shoot():
 	var new_ammo = ammo.instantiate()
 	new_ammo.global_position = %BulletSpawnPoint.global_position
-	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
+	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation + deg_to_rad(-90)
 	for strategy in ammo_modifiers:
 		strategy.apply_upgrade(new_ammo)
 	%BulletSpawnPoint.add_child(new_ammo)
+	new_ammo.sprite.rotation_degrees += 90
 
 func _physics_process(delta):
-	manual_aim()
-	#auto_aim()
+	#manual_aim()
+	auto_aim()
 
 func _on_timer_timeout():
 	shoot()

@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1lldn02g0tlb"]
+[gd_scene load_steps=4 format=3 uid="uid://cmhp45y2a2bfr"]
 
-[ext_resource type="Script" path="res://game/Ammo/ammo.gd" id="1_ep8h6"]
-[ext_resource type="Texture2D" uid="uid://28kqojmmp13b" path="res://art/Arrow.png" id="2_ohas1"]
+[ext_resource type="Script" path="res://game/Ammo/BowAmmo/BowAmmo.gd" id="1_pmksv"]
+[ext_resource type="Texture2D" uid="uid://28kqojmmp13b" path="res://art/Arrow.png" id="2_gb5p6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y8xna"]
 radius = 4.0
 
-[node name="Ammo" type="Area2D"]
+[node name="SwordAmmo" type="Area2D"]
 top_level = true
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_ep8h6")
+script = ExtResource("1_pmksv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-3, 0)
-texture = ExtResource("2_ohas1")
+texture = ExtResource("2_gb5p6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y8xna")

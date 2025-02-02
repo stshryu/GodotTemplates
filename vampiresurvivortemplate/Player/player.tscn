@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddfcl58tgwsj7"]
+[gd_scene load_steps=9 format=3 uid="uid://ddfcl58tgwsj7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
 [ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/Weapons/Bow/bow.tscn" id="3_xfu64"]
+[ext_resource type="PackedScene" uid="uid://jgtkvontip7r" path="res://game/Weapons/Sword/sword.tscn" id="4_lkv4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
 size = Vector2(14, 14)
@@ -33,6 +34,9 @@ shape = SubResource("RectangleShape2D_xbshb")
 [node name="Bow" parent="." instance=ExtResource("3_xfu64")]
 unique_name_in_owner = true
 
+[node name="Sword" parent="." instance=ExtResource("4_lkv4n")]
+unique_name_in_owner = true
+
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
@@ -55,10 +59,11 @@ show_percentage = false
 
 [node name="PlayerStats" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-offset_left = 23.0
-offset_top = -41.0
-offset_right = 294.0
-offset_bottom = 44.0
+offset_left = 174.0
+offset_top = -152.0
+offset_right = 445.0
+offset_bottom = -67.0
 theme_override_font_sizes/normal_font_size = 5
 
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
+[connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
