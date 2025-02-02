@@ -9,6 +9,10 @@ extends CharacterBody2D
 
 var current_health = default_health
 
+# We need to make sure that enemies are inheriting a base class. Importantly, this is designed to ensure that constants
+# like take_damage() aren't duplicated across enemies. Also if we wanted to implement a drop function for items/powerups
+# we don't want to duplicate that code over and over again.
+
 func _ready():
 	mobhealthbar.max_value = default_health
 	mobhealthbar.value = default_health
