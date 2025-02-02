@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jgtkvontip7r"]
 
-[ext_resource type="Script" path="res://game/Weapons/Sword/sword.gd" id="1_aaaat"]
+[ext_resource type="Script" path="res://game/weapons/sword/sword.gd" id="1_aaaat"]
 [ext_resource type="Texture2D" uid="uid://dj1t7lx3byxy3" path="res://art/Sword.png" id="2_qusjx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lunni"]
