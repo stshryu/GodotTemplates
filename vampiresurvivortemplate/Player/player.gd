@@ -12,10 +12,18 @@ signal upgrade_picked_up
 @onready var playerhealthbar = %HealthBar
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
+var player_stats: Dictionary = {}
 
 func _ready():
 	playerhealthbar.max_value = default_health
+	_set_player_base_stats()
 	_display_weapon_stats()
+	_display_player_stats()
+
+func _set_player_base_stats():
+	player_stats = {
+		"exp": 0
+	}
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -35,8 +43,21 @@ func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	player_upgrades.append(ammo_strategy)
 	upgrade_picked_up.emit(player_upgrades)
 	_display_weapon_stats()
+	
+func apply_item_to_player(operation: String, key: String, value):
+	if operation == "add":
+		player_stats[key] += value
+	else:
+		player_stats[key] -= value
+	_display_player_stats()
 
-func _display_weapon_stats(): # Move this into the debug scripts when we modularize weapons and weapon pickups
+func _display_player_stats(): # Move this (and weapon stats) into the debug scripts eventually
+	var base_string = "%s: %s\n"
+	%PlayerInternalStats.text = ""
+	for key in player_stats:
+		%PlayerInternalStats.append_text(base_string % [key, str(player_stats[key])])
+	
+func _display_weapon_stats(): 
 	var weapon = %Bow
 	var ammo = %Bow.ammo
 	var new_ammo = ammo.instantiate()

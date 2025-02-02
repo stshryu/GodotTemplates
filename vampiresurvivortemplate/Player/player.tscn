@@ -65,5 +65,13 @@ offset_right = 445.0
 offset_bottom = -67.0
 theme_override_font_sizes/normal_font_size = 5
 
+[node name="PlayerInternalStats" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = -151.0
+offset_top = -154.0
+offset_right = 120.0
+offset_bottom = -69.0
+theme_override_font_sizes/normal_font_size = 5
+
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
 [connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
