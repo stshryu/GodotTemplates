@@ -4,58 +4,44 @@ extends CharacterBody2D
 signal gameover
 signal upgrade_picked_up
 
-@export var player_speed = 100
-@export var default_health = 100.0
-
-@onready var current_health = default_health
 @onready var hurtbox = %HurtBox
 @onready var playerhealthbar = %HealthBar
+@onready var playerstats: PlayerStats = PlayerStats.new()
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
-var player_stats: Dictionary = {}
+var current_health: float
 
 func _ready():
-	playerhealthbar.max_value = default_health
-	_set_player_base_stats()
-	_display_weapon_stats()
 	_display_player_stats()
-
-func _set_player_base_stats():
-	player_stats = {
-		"exp": 0
-	}
+	_display_weapon_stats()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * player_speed
+	velocity = direction * playerstats.movement_speed
 	move_and_slide()
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		for mob in overlapping_mobs:
-			if "damage_rate" in mob:
-				current_health -= mob.damage_rate * delta
-		playerhealthbar.value = current_health
-		if current_health <= 0.0:
+			if mob.get("mobstats"):
+				playerstats.take_damage(mob.mobstats.damage * delta)
+		playerhealthbar.value = playerstats.current_health
+		if playerstats.current_health <= 0.0:
 			gameover.emit()
+	_display_player_stats()
 
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	player_upgrades.append(ammo_strategy)
 	upgrade_picked_up.emit(player_upgrades)
 	_display_weapon_stats()
 	
-func apply_item_to_player(operation: String, key: String, value):
-	if operation == "add":
-		player_stats[key] += value
-	else:
-		player_stats[key] -= value
-	_display_player_stats()
-
-func _display_player_stats(): # Move this (and weapon stats) into the debug scripts eventually
-	var base_string = "%s: %s\n"
+func _display_player_stats():
+	var basestr = "%s: %s\n"
 	%PlayerInternalStats.text = ""
-	for key in player_stats:
-		%PlayerInternalStats.append_text(base_string % [key, str(player_stats[key])])
+	%PlayerInternalStats.append_text(basestr % ["ms", playerstats.movement_speed])
+	%PlayerInternalStats.append_text(basestr % ["max_h", playerstats.maximum_health])
+	%PlayerInternalStats.append_text(basestr % ["current_health", playerstats.current_health])
+	%PlayerInternalStats.append_text(basestr % ["exp", playerstats.experience])
 	
 func _display_weapon_stats(): 
 	var weapon = %Bow
