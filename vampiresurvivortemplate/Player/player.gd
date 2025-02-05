@@ -36,12 +36,11 @@ func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	_display_weapon_stats()
 	
 func _display_player_stats():
+	var stats = EntityStats.get_customresource_property_list(playerstats)
 	var basestr = "%s: %s\n"
 	%PlayerInternalStats.text = ""
-	%PlayerInternalStats.append_text(basestr % ["ms", playerstats.movement_speed])
-	%PlayerInternalStats.append_text(basestr % ["max_h", playerstats.maximum_health])
-	%PlayerInternalStats.append_text(basestr % ["current_health", playerstats.current_health])
-	%PlayerInternalStats.append_text(basestr % ["exp", playerstats.experience])
+	for key in stats:
+		%PlayerInternalStats.append_text(basestr % [key, stats[key]])
 	
 func _display_weapon_stats(): 
 	var weapon = %Bow
