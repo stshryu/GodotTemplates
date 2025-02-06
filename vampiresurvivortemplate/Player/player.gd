@@ -9,9 +9,13 @@ signal upgrade_picked_up
 @onready var playerstats: PlayerStats = PlayerStats.new()
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
+var player_level: LevelUpAmmoStrategy
 var current_health: float
 
 func _ready():
+	player_level = LevelUpAmmoStrategy.new()
+	player_level.stat_increase = 0
+	player_upgrades.append(player_level)
 	_display_player_stats()
 	_display_weapon_stats()
 
@@ -29,7 +33,11 @@ func _physics_process(delta):
 		if playerstats.current_health <= 0.0:
 			gameover.emit()
 	_display_player_stats()
-
+	_display_weapon_stats()
+	
+func level_up():
+	upgrade_picked_up.emit(player_upgrades)	
+	
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	player_upgrades.append(ammo_strategy)
 	upgrade_picked_up.emit(player_upgrades)

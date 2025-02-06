@@ -23,6 +23,8 @@ func shoot():
 	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
 	for strategy in ammo_modifiers:
 		strategy.apply_upgrade(new_ammo)
+		if strategy.get("multiplier"):
+			print(strategy.multiplier)
 	%BulletSpawnPoint.add_child(new_ammo)
 
 func _physics_process(delta):

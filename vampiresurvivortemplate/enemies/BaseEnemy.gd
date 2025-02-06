@@ -25,4 +25,4 @@ func take_damage(amount: float):
 func drop_loot(): # Implement an actual loot table, for now lets only have the mobs drop exp when killed
 	var newdrop = expdrop.instantiate()
 	newdrop.position = position
-	get_parent().add_child(newdrop)
+	get_parent().call_deferred("add_child", newdrop)

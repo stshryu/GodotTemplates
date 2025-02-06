@@ -5,5 +5,5 @@ func _ready():
 	
 func apply_item(body: Player):
 	if body.get("playerstats"):
-		body.playerstats.update_experience(value)
+		body.playerstats.update_experience(value, body)
 	
