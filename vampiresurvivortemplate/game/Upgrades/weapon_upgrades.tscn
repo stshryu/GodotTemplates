@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://t2uwocug8ong"]
+
+[ext_resource type="Script" path="res://game/Upgrades/weapon_upgrades.gd" id="1_c20yd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78ns5"]
+
+[node name="WeaponUpgrades" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
+script = ExtResource("1_c20yd")
+upgrade_label = NodePath("WeaponUpgradeLabel")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_78ns5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="WeaponUpgradeLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+theme_override_font_sizes/font_size = 10

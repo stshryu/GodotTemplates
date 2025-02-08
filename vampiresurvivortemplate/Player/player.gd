@@ -3,12 +3,14 @@ extends CharacterBody2D
 
 signal gameover
 signal upgrade_picked_up
+signal weapon_upgrade_picked_up
 
 @onready var hurtbox = %HurtBox
 @onready var playerhealthbar = %HealthBar
 @onready var playerstats: PlayerStats = PlayerStats.new()
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
+var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
 var player_level: LevelUpAmmoStrategy
 var current_health: float
 
@@ -41,6 +43,11 @@ func level_up():
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	player_upgrades.append(ammo_strategy)
 	upgrade_picked_up.emit(player_upgrades)
+	_display_weapon_stats()
+	
+func _weapon_upgrade_picked_up(weapon_strategy: BaseWeaponStrategy):
+	player_weapon_upgrades.append(weapon_strategy)
+	weapon_upgrade_picked_up.emit(weapon_strategy)
 	_display_weapon_stats()
 	
 """

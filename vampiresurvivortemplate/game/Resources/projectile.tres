@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponStrategy" load_steps=3 format=3 uid="uid://dx4mi38gwdokr"]
+
+[ext_resource type="Script" path="res://game/weapons/weapon_strategy/ProjectileWeaponStrategy.gd" id="1_cda26"]
+[ext_resource type="Texture2D" uid="uid://k5vmsgrhaq8v" path="res://art/ScrollPlant.png" id="2_m63bc"]
+
+[resource]
+script = ExtResource("1_cda26")
+name = "Projectile"
+texture = ExtResource("2_m63bc")

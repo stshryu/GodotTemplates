@@ -75,3 +75,5 @@ theme_override_font_sizes/normal_font_size = 5
 
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
 [connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
+[connection signal="weapon_upgrade_picked_up" from="." to="Bow" method="_on_player_weapon_upgrade_picked_up"]
+[connection signal="weapon_upgrade_picked_up" from="." to="Sword" method="_on_player_weapon_upgrade_picked_up"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bff3m3vh3yae1"]
+[gd_scene load_steps=10 format=3 uid="uid://bff3m3vh3yae1"]
 
 [ext_resource type="PackedScene" uid="uid://ddfcl58tgwsj7" path="res://Player/player.tscn" id="1_y6yuw"]
 [ext_resource type="Script" path="res://game/game.gd" id="1_yi5op"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://dlu8fhovv48ef" path="res://game/Resources/damage.tres" id="4_4ue01"]
 [ext_resource type="Resource" uid="uid://c4e82ayeiwn2g" path="res://game/Resources/pierce.tres" id="5_mo33r"]
 [ext_resource type="PackedScene" uid="uid://dbbj3q56ynr0u" path="res://game/items/expitem/expdrop.tscn" id="6_k1w3r"]
+[ext_resource type="PackedScene" uid="uid://t2uwocug8ong" path="res://game/Upgrades/weapon_upgrades.tscn" id="7_l4ora"]
+[ext_resource type="Resource" uid="uid://dx4mi38gwdokr" path="res://game/Resources/projectile.tres" id="8_tko57"]
 
 [sub_resource type="Curve2D" id="Curve2D_5eoh7"]
 _data = {
@@ -51,5 +53,9 @@ ammo_strategy = ExtResource("5_mo33r")
 
 [node name="ExpDrop" parent="." instance=ExtResource("6_k1w3r")]
 position = Vector2(312, 192)
+
+[node name="WeaponUpgrades" parent="." instance=ExtResource("7_l4ora")]
+upgrade_name = "Projectile"
+weapon_strategy = ExtResource("8_tko57")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

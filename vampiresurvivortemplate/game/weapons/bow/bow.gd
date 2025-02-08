@@ -3,13 +3,9 @@ extends BaseWeapon
 
 func _ready():
 	ammo = preload("res://game/Ammo/BowAmmo/BowAmmo.tscn")
+	projectiles += 0
+	base_projectile_arc_degree = 90.0
 
 func _physics_process(delta):
 	manual_aim()
 	#auto_aim()
-
-func _on_timer_timeout():
-	shoot()
-
-func _on_player_upgrade_picked_up(player_upgrades: Array[BaseAmmoStrategy]):
-	ammo_modifiers = player_upgrades

@@ -4,5 +4,5 @@ extends Resource
 @export var name: String = "DEFAULT"
 @export var texture: Texture2D
 
-func apply_upgrade(weapon: Weapon): 
+func apply_upgrade(weapon: BaseWeapon): 
 	pass
