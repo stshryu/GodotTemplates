@@ -1,20 +1,10 @@
 class_name BaseSword
-extends Area2D
-
-const ammo = preload("res://game/Ammo/SwordAmmo/SwordAmmo.tscn")
-
-var ammo_modifiers: Array[BaseAmmoStrategy] = []
+extends BaseWeapon
 	
-func manual_aim():
-	rotation += get_local_mouse_position().angle()
-	
-func auto_aim():
-	var enemies_in_range = get_overlapping_bodies()
-	if enemies_in_range.size() > 0:
-		var target_enemy = enemies_in_range.front()
-		look_at(target_enemy.global_position)
+func _ready():
+	ammo = preload("res://game/Ammo/SwordAmmo/SwordAmmo.tscn")
 
-func shoot():
+func shoot(): # Unsure if this should be moved to the base class and call a method that modifies the bullet so child classes can modify how it behaves instead of re-writing the entire shoot function
 	var new_ammo = ammo.instantiate()
 	new_ammo.global_position = %BulletSpawnPoint.global_position
 	new_ammo.global_rotation = %BulletSpawnPoint.global_rotation + deg_to_rad(-90)
@@ -33,9 +23,3 @@ func _on_timer_timeout():
 func _on_player_upgrade_picked_up(player_upgrades: Array[BaseAmmoStrategy]):
 	ammo_modifiers = player_upgrades
 	
-func _print_weapon_stats():
-	var new_ammo = ammo.instantiate()
-	for strategy in ammo_modifiers:
-		strategy.apply_upgrade(new_ammo)
-	new_ammo._ready()
-	return new_ammo.to_string()
