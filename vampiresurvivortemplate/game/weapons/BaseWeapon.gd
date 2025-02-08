@@ -30,10 +30,22 @@ func shoot(override_rotation = null):
 		var base_rotation_start = %BulletSpawnPoint.global_rotation - deg_to_rad(base_projectile_arc_degree / 2)
 		new_ammo.global_rotation = base_rotation_start + deg_to_rad(override_rotation)
 	else:
-		%BulletSpawnPoint.global_rotation
+		new_ammo.global_rotation = %BulletSpawnPoint.global_rotation
 	for strategy in ammo_modifiers:
 		strategy.apply_upgrade(new_ammo)
+	child_shoot_override(new_ammo)
 	%BulletSpawnPoint.add_child(new_ammo)
+	deferred_child_shoot_override(new_ammo)
+
+# Allow children to manipulate the shoot method.
+func child_shoot_override(ammo: Ammo) -> Ammo:
+	return ammo
+	
+# The deferred method will manipulate an already created (and processed into the scene tree) object 
+# of the ammo, there's no need to return the ammo since we will be manipulating it directly through 
+# the tree.
+func deferred_child_shoot_override(ammo: Ammo):
+	pass
 
 func calculate_multiple_projectile_rotation(projectile_count: int) -> Array[float]:
 	var rotation_array: Array[float] = []
