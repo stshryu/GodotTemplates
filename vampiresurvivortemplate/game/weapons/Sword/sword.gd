@@ -3,8 +3,8 @@ extends BaseWeapon
 	
 func _ready():
 	ammo = preload("res://game/Ammo/SwordAmmo/SwordAmmo.tscn")
-	projectiles += 0
-	base_projectile_arc_degree = 90.0
+	projectiles += 3
+	base_projectile_arc_degree = 360.0
 
 func child_shoot_override(ammo: Ammo):
 	ammo.global_rotation += deg_to_rad(-90)

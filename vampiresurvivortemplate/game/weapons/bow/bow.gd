@@ -3,8 +3,8 @@ extends BaseWeapon
 
 func _ready():
 	ammo = preload("res://game/Ammo/BowAmmo/BowAmmo.tscn")
-	projectiles += 0
-	base_projectile_arc_degree = 90.0
+	projectiles += 3
+	base_projectile_arc_degree = 180.0
 
 func _physics_process(delta):
 	manual_aim()

@@ -22,7 +22,7 @@ texture = ExtResource("2_qusjx")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="PivotPoint/Sprite"]
 unique_name_in_owner = true
-position = Vector2(4, 0)
+position = Vector2(-12, 0)
 rotation = 1.5708
 
 [node name="Timer" type="Timer" parent="."]
