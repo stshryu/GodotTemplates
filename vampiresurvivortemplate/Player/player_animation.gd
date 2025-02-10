@@ -11,5 +11,7 @@ func _physics_process(delta: float) -> void:
 	if !idle:
 		last_facing_direction = player.velocity.normalized()
 		
-	animation_tree.set("parameters/Walk/blend_position", last_facing_direction)
-	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
+	animation_tree.set("parameters/PlayerStates/Walk/blend_position", last_facing_direction)
+	animation_tree.set("parameters/PlayerStates/Idle/blend_position", last_facing_direction)
+
+	animation_tree.set("parameters/TimeScale/scale", 4)
