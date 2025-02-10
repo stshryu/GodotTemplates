@@ -32,10 +32,12 @@ func spawn_mob():
 
 func consolidate_xp(): 
 	var exp_drops = %ExpContainer
-	if exp_drops.get_child_count() >= 10:
+	var total_summed_xp = 0
+	if exp_drops.get_child_count() >= 11:
 		for child in exp_drops.get_children():
+			total_summed_xp += child.value
 			child.queue_free()
-		return true
+		return total_summed_xp
 	return false
 
 func _on_timer_timeout():

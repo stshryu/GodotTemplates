@@ -13,11 +13,14 @@ var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
 var player_level: LevelUpAmmoStrategy
 var current_health: float
+var player_abilities: Array[BaseAbility] = []
+var last_facing_direction := Vector2(0,-1)
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
 	player_level.stat_increase = 0
 	player_upgrades.append(player_level)
+	player_abilities.append(DashAbility.new(self))
 	_display_player_stats()
 	_display_weapon_stats()
 
@@ -25,6 +28,9 @@ func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * playerstats.movement_speed
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("dash"):
+		player_abilities[0].use_ability(self)
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
