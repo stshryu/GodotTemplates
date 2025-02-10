@@ -51,11 +51,14 @@ ammo_strategy = ExtResource("4_4ue01")
 position = Vector2(72, 160)
 ammo_strategy = ExtResource("5_mo33r")
 
-[node name="ExpDrop" parent="." instance=ExtResource("6_k1w3r")]
-position = Vector2(312, 192)
-
 [node name="WeaponUpgrades" parent="." instance=ExtResource("7_l4ora")]
 upgrade_name = "Projectile"
 weapon_strategy = ExtResource("8_tko57")
+
+[node name="ExpContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ExpDrop" parent="ExpContainer" instance=ExtResource("6_k1w3r")]
+position = Vector2(312, 192)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

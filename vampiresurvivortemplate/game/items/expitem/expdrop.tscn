@@ -5,17 +5,19 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j2bmw"]
 
-[node name="ExpDrop" type="Area2D"]
+[node name="ExpDrop" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_r2g8g")
 itemname = "expdrop"
 operation = "add"
 key = "exp"
 value = 100.0
+sprite = NodePath("sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_j2bmw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.485237, 0.145538, 0.15813, 1)
 texture = ExtResource("1_i571o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

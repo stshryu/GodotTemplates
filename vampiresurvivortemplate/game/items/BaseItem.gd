@@ -5,6 +5,7 @@ extends Area2D
 @export var operation: String
 @export var key: String
 @export var value: float
+@export var sprite: Sprite2D
 
 func apply_item(body: Player):
 	pass
