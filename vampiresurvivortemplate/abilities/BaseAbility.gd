@@ -8,6 +8,7 @@ extends Node2D
 var parent_entity
 var is_usable: bool = true
 var timer := Timer.new()
+var time_left: float
 
 func _init(parent_entity):
 	parent_entity.add_child(timer)
@@ -16,6 +17,11 @@ func _init(parent_entity):
 	timer.timeout.connect(_on_timer_timeout)
 	self._ready()
 	
+func _physics_process(delta):
+	if !is_usable:
+		time_left = timer.time_left
+		print(time_left)
+		
 ### TODO:
 ### Make both Player, and Enemies inherit off the same base class (call it entity or something)
 ### that way we can ensure that things like abilities can be used by both enemies and the player 

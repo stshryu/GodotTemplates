@@ -21,6 +21,7 @@ func _ready():
 	player_level.stat_increase = 0
 	player_upgrades.append(player_level)
 	player_abilities.append(DashAbility.new(self))
+	self.add_child(player_abilities[0])
 	_display_player_stats()
 	_display_weapon_stats()
 
