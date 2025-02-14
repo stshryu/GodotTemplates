@@ -13,14 +13,12 @@ var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
 var player_level: LevelUpAmmoStrategy
 var current_health: float
-var player_abilities: Array[BaseAbility] = []
 var last_facing_direction := Vector2(0,-1)
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
 	player_level.stat_increase = 0
 	player_upgrades.append(player_level)
-	player_abilities.append(DashAbility.new(self))
 	self.add_child(player_abilities[0])
 	_display_player_stats()
 	_display_weapon_stats()
