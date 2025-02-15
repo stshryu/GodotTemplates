@@ -1,5 +1,5 @@
 class_name BaseEnemy
-extends CharacterBody2D
+extends BaseEntity
 
 @onready var player = get_node("/root/Game/Player")
 @onready var mobhealthbar = %HealthBar

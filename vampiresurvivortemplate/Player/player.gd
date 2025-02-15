@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends BaseEntity
 
 signal gameover
 signal upgrade_picked_up
@@ -19,7 +19,6 @@ func _ready():
 	player_level = LevelUpAmmoStrategy.new()
 	player_level.stat_increase = 0
 	player_upgrades.append(player_level)
-	self.add_child(player_abilities[0])
 	_display_player_stats()
 	_display_weapon_stats()
 
@@ -29,7 +28,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("dash"):
-		player_abilities[0].use_ability(self)
+		pass
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
@@ -43,7 +42,7 @@ func _physics_process(delta):
 	_display_weapon_stats()
 	
 func level_up():
-	upgrade_picked_up.emit(player_upgrades)	
+	upgrade_picked_up.emit(player_upgrades)
 	
 func _upgrade_picked_up(ammo_strategy: BaseAmmoStrategy):
 	player_upgrades.append(ammo_strategy)
