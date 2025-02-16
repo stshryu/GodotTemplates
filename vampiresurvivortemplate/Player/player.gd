@@ -8,6 +8,7 @@ signal weapon_upgrade_picked_up
 @onready var hurtbox = %HurtBox
 @onready var playerhealthbar = %HealthBar
 @onready var playerstats: PlayerStats = PlayerStats.new()
+@onready var player_ability_node = %ability_node
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
@@ -27,8 +28,15 @@ func _physics_process(delta):
 	velocity = direction * playerstats.movement_speed
 	move_and_slide()
 	
+	### TODO:
+	### Something important to note, my keyboard isn't able to handle key ghosting because it can't
+	### handle both S and D being pressed at the same time as space to register a dash. It also 
+	### struggles to handle A,S and W,D whereas W,A and the singular W,A,S,D appear to work perfectly
+	### fine with the spacebar as dash. Hopefully its a keyboard issue, and not a ingame engine
+	### input dropping issue.
 	if Input.is_action_just_pressed("dash"):
-		pass
+		var dash = player_ability_node.get_child(0)
+		dash.use_ability(self)
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:

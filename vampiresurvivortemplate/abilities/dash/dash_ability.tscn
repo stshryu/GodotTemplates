@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://s6a3dwbauc0y"]
+
+[ext_resource type="Script" path="res://abilities/dash/dash_ability.gd" id="1_4qo4l"]
+[ext_resource type="Texture2D" uid="uid://dlk4tq7jp2268" path="res://art/OrbWater.png" id="2_17bxq"]
+
+[node name="DashAbility" type="Node2D"]
+script = ExtResource("1_4qo4l")
+
+[node name="ui_sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(12, 12)
+texture = ExtResource("2_17bxq")
+
+[node name="cooldown_text" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 6.0
+offset_right = 67.0
+offset_bottom = 18.0
+theme_override_font_sizes/normal_font_size = 10
+scroll_active = false
+
+[node name="cooldown_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="BaseAbility" load_steps=3 format=3 uid="uid://bsj40hroauykg"]
-
-[ext_resource type="PackedScene" uid="uid://bd0cuiobacwql" path="res://abilities/Ability.tscn" id="1_3j74v"]
-[ext_resource type="Script" path="res://abilities/BaseAbility.gd" id="2_twla0"]
-
-[resource]
-script = ExtResource("2_twla0")
-ability_scene = ExtResource("1_3j74v")

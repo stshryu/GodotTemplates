@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddfcl58tgwsj7"]
+[gd_scene load_steps=24 format=3 uid="uid://ddfcl58tgwsj7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jgtkvontip7r" path="res://game/weapons/sword/sword.tscn" id="4_lkv4n"]
 [ext_resource type="Script" path="res://Player/player_animation.gd" id="5_oiu4p"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dss6ssjg4kmku" path="res://animation/playeranimation.tres" id="6_dcus4"]
+[ext_resource type="PackedScene" uid="uid://s6a3dwbauc0y" path="res://abilities/dash/dash_ability.tscn" id="7_30b1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
 size = Vector2(14, 14)
@@ -264,6 +265,22 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/PlayerStates/Idle/blend_position = Vector2(0, 0)
 parameters/PlayerStates/Walk/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
+
+[node name="ability_canvas" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="ability_canvas"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="ability_node" type="Node2D" parent="ability_canvas/Control"]
+unique_name_in_owner = true
+
+[node name="DashAbility" parent="ability_canvas/Control/ability_node" instance=ExtResource("7_30b1c")]
 
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
 [connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
