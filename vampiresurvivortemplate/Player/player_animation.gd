@@ -12,4 +12,9 @@ func _physics_process(delta: float) -> void:
 	animation_tree.set("parameters/PlayerStates/Walk/blend_position", player.last_facing_direction)
 	animation_tree.set("parameters/PlayerStates/Idle/blend_position", player.last_facing_direction)
 
-	animation_tree.set("parameters/TimeScale/scale", 4)
+	set_anim_speed(player)
+
+func set_anim_speed(player: Player) -> void: 
+	var playerms = player.playerstats.movement_speed
+	var speed_mult = playerms / 25
+	animation_tree.set("parameters/TimeScale/scale", speed_mult)

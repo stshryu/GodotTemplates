@@ -44,6 +44,7 @@ func start_cooldown_timer():
 func start_dash_action_lockout():
 	dash_duration_timer.start()
 	parent_entity.can_act = false
+	parent_entity.can_be_damaged = false
 	parent_entity.playerstats.movement_speed += dash_speed_modifier
 	if alternate_dash: # Alternate dashing allows movement to be independent of dash direction
 		var view_mouse = get_viewport().get_mouse_position()
@@ -64,4 +65,5 @@ func _on_cooldown_timer_timeout():
 
 func _on_dash_duration_timer_timeout():
 	parent_entity.can_act = true
+	parent_entity.can_be_damaged = true
 	parent_entity.playerstats.movement_speed -= dash_speed_modifier

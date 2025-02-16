@@ -9,6 +9,7 @@ signal weapon_upgrade_picked_up
 @onready var playerhealthbar = %HealthBar
 @onready var playerstats: PlayerStats = PlayerStats.new()
 @onready var player_ability_node = %ability_ui_control
+@onready var animation_tree = %AnimationTree
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
@@ -23,6 +24,8 @@ var last_direction := Vector2.ZERO
 var can_act: bool = true
 var can_move: bool = true
 var is_moving: bool = false
+var is_casting: bool = false
+var can_be_damaged: bool = true
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
@@ -51,14 +54,15 @@ func _physics_process(delta):
 		var dash = player_ability_node.get_child(0)
 		dash.use_ability()
 	
-	var overlapping_mobs = hurtbox.get_overlapping_bodies()
-	if overlapping_mobs.size() > 0:
-		for mob in overlapping_mobs:
-			if mob.get("mobstats"):
-				playerstats.take_damage(mob.mobstats.damage * delta)
-		playerhealthbar.value = playerstats.current_health
-		if playerstats.current_health <= 0.0:
-			gameover.emit()
+	if can_be_damaged:
+		var overlapping_mobs = hurtbox.get_overlapping_bodies()
+		if overlapping_mobs.size() > 0:
+			for mob in overlapping_mobs:
+				if mob.get("mobstats"):
+					playerstats.take_damage(mob.mobstats.damage * delta)
+			playerhealthbar.value = playerstats.current_health
+			if playerstats.current_health <= 0.0:
+				gameover.emit()
 	_display_player_stats()
 	_display_weapon_stats()
 	
