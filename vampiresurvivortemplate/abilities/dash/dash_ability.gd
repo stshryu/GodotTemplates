@@ -12,6 +12,7 @@ var is_usable = true
 
 func _ready():
 	cooldown_timer.wait_time = dash_cooldown
+	cooldown_timer.one_shot = true
 	cooldown_text.visible = false
 	
 func _process(_delta):
@@ -21,7 +22,7 @@ func _process(_delta):
 		cooldown_text.text = cooldown_remaining
 
 func use_ability(parent_entity):
-	if is_usable:
+	if is_usable and parent_entity.velocity != Vector2(0,0):
 		parent_entity.global_position += parent_entity.velocity.normalized() * dash_distance
 		cooldown_timer.start()
 		is_usable = false

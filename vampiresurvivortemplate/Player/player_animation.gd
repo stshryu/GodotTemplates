@@ -5,7 +5,7 @@ extends Node2D
 
 func _physics_process(delta: float) -> void:
 	var idle = !player.velocity
-	 
+	
 	if !idle:
 		player.last_facing_direction = player.velocity.normalized()
 		

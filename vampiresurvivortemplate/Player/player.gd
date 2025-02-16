@@ -14,7 +14,10 @@ var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
 var player_level: LevelUpAmmoStrategy
 var current_health: float
+
+### Player entity related properties
 var last_facing_direction := Vector2(0,-1)
+var is_moving = false
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
@@ -24,6 +27,8 @@ func _ready():
 	_display_weapon_stats()
 
 func _physics_process(delta):
+	is_moving = true if velocity else false
+	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * playerstats.movement_speed
 	move_and_slide()
