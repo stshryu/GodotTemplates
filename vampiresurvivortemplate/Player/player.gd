@@ -17,31 +17,39 @@ var current_health: float
 
 ### Player entity related properties
 var last_facing_direction := Vector2(0,-1)
-var is_moving = false
+var last_direction := Vector2.ZERO
+
+### Player control related properties
+var can_act: bool = true
+var can_move: bool = true
+var is_moving: bool = false
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
 	player_level.stat_increase = 0
 	player_upgrades.append(player_level)
+	var dash = player_ability_node.get_child(0)
+	dash.set_parent(self)
 	_display_player_stats()
 	_display_weapon_stats()
 
 func _physics_process(delta):
 	is_moving = true if velocity else false
 	
-	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * playerstats.movement_speed
-	move_and_slide()
+	if can_act:
+		var direction = Input.get_vector("left", "right", "up", "down")
+		last_direction = direction
+	velocity = last_direction * playerstats.movement_speed
+	
+	if can_move: 
+		move_and_slide()
 	
 	### TODO:
-	### Something important to note, my keyboard isn't able to handle key ghosting because it can't
-	### handle both S and D being pressed at the same time as space to register a dash. It also 
-	### struggles to handle A,S and W,D whereas W,A and the singular W,A,S,D appear to work perfectly
-	### fine with the spacebar as dash. Hopefully its a keyboard issue, and not a ingame engine
-	### input dropping issue.
+	### Want to add a input mapping system where instead of pressing "dash" they'll be pressing 
+	### ability slot 0, or ability slot 1 or something.
 	if Input.is_action_just_pressed("dash"):
 		var dash = player_ability_node.get_child(0)
-		dash.use_ability(self)
+		dash.use_ability()
 	
 	var overlapping_mobs = hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:

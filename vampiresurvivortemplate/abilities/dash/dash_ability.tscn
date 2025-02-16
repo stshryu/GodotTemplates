@@ -23,4 +23,8 @@ scroll_active = false
 [node name="cooldown_timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
+[node name="dash_duration_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="dash_duration_timer" to="." method="_on_dash_duration_timer_timeout"]

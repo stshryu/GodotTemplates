@@ -4,16 +4,25 @@ extends Node2D
 @onready var sprite: Sprite2D = %ui_sprite
 @onready var cooldown_text: RichTextLabel = %cooldown_text
 @onready var cooldown_timer: Timer = %cooldown_timer
+@onready var dash_duration_timer: Timer = %dash_duration_timer
 
 @export var dash_distance: Vector2 = Vector2(50.0,50.0)
 @export var dash_cooldown: float = 5.0
+@export var dash_duration: float = 0.25
+@export var dash_speed_modifier: float = 500.0
 
 var is_usable = true
+var parent_entity
 
 func _ready():
 	cooldown_timer.wait_time = dash_cooldown
 	cooldown_timer.one_shot = true
+	dash_duration_timer.wait_time = dash_duration
+	dash_duration_timer.one_shot = true
 	cooldown_text.visible = false
+	
+func set_parent(entity):
+	parent_entity = entity
 	
 func _process(_delta):
 	if not is_usable:
@@ -21,12 +30,20 @@ func _process(_delta):
 		cooldown_text.visible = true
 		cooldown_text.text = cooldown_remaining
 
-func use_ability(parent_entity):
-	if is_usable and parent_entity.velocity != Vector2(0,0):
-		parent_entity.global_position += parent_entity.velocity.normalized() * dash_distance
-		cooldown_timer.start()
-		is_usable = false
+func use_ability():
+	if is_usable and parent_entity.is_moving:
+		start_dash_action_lockout()
+		start_cooldown_timer()
 		toggle_greyscale()
+
+func start_cooldown_timer():
+	cooldown_timer.start()
+	is_usable = false
+	
+func start_dash_action_lockout():
+	dash_duration_timer.start()
+	parent_entity.can_act = false
+	parent_entity.playerstats.movement_speed += dash_speed_modifier
 
 func toggle_greyscale():
 	if sprite.modulate == Color.DIM_GRAY:
@@ -38,3 +55,7 @@ func _on_cooldown_timer_timeout():
 	is_usable = true
 	cooldown_text.visible = false
 	toggle_greyscale()
+
+func _on_dash_duration_timer_timeout():
+	parent_entity.can_act = true
+	parent_entity.playerstats.movement_speed -= dash_speed_modifier
