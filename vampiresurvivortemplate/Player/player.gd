@@ -8,7 +8,7 @@ signal weapon_upgrade_picked_up
 @onready var hurtbox = %HurtBox
 @onready var playerhealthbar = %HealthBar
 @onready var playerstats: PlayerStats = PlayerStats.new()
-@onready var player_ability_node = %ability_node
+@onready var player_ability_node = %ability_ui_control
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []

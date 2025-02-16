@@ -268,8 +268,8 @@ parameters/TimeScale/scale = 1.0
 
 [node name="ability_canvas" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="ability_canvas"]
-layout_mode = 3
+[node name="ability_ui_control" type="HBoxContainer" parent="ability_canvas"]
+unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -277,10 +277,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="ability_node" type="Node2D" parent="ability_canvas/Control"]
-unique_name_in_owner = true
-
-[node name="DashAbility" parent="ability_canvas/Control/ability_node" instance=ExtResource("7_30b1c")]
+[node name="DashAbility" parent="ability_canvas/ability_ui_control" instance=ExtResource("7_30b1c")]
 
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
 [connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
