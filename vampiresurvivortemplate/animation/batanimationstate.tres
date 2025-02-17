@@ -1,0 +1,13 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=3 format=3 uid="uid://civp0nprpf6pn"]
+
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bvbx1qbobxtdb" path="res://animation/batanimation.tres" id="1_yhn1h"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4go81"]
+advance_mode = 2
+advance_expression = "true"
+
+[resource]
+states/Move/node = ExtResource("1_yhn1h")
+states/Move/position = Vector2(411, 100)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_4go81")]
+graph_offset = Vector2(-239, -33)

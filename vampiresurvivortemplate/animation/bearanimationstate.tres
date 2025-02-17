@@ -1,0 +1,12 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=3 format=3 uid="uid://t6xo7vthyg5p"]
+
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://f6bvdrw3ubhr" path="res://animation/bearanimation.tres" id="1_gt0s4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gx4uj"]
+advance_mode = 2
+advance_expression = "true"
+
+[resource]
+states/Move/node = ExtResource("1_gt0s4")
+states/Move/position = Vector2(422, 100)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_gx4uj")]

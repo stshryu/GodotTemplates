@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://da0iio6tdcoc2"]
+[gd_scene load_steps=16 format=3 uid="uid://da0iio6tdcoc2"]
 
 [ext_resource type="Script" path="res://enemies/bat/bat.gd" id="1_dwqwl"]
 [ext_resource type="Texture2D" uid="uid://cdbu8upq0m5ds" path="res://art/BatSpriteSheet.png" id="2_oe8fk"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://civp0nprpf6pn" path="res://animation/batanimationstate.tres" id="3_3l2qd"]
+[ext_resource type="Script" path="res://enemies/bat/bat_animation.gd" id="3_furvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo0lc"]
 size = Vector2(16, 16)
@@ -12,6 +14,107 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26wxy"]
 bg_color = Color(0, 0.87451, 0.203922, 1)
 
+[sub_resource type="Animation" id="Animation_8rutg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fl65d"]
+resource_name = "move_down"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_tb8rg"]
+resource_name = "running"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_pyxrl"]
+resource_name = "move_right"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_0htpd"]
+resource_name = "move_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6fv2"]
+_data = {
+"RESET": SubResource("Animation_8rutg"),
+"move_down": SubResource("Animation_fl65d"),
+"move_left": SubResource("Animation_tb8rg"),
+"move_right": SubResource("Animation_pyxrl"),
+"move_up": SubResource("Animation_0htpd")
+}
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wj7s2"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_i4oil"]
+graph_offset = Vector2(-682.61, 51.7355)
+nodes/BatAnim/node = ExtResource("3_3l2qd")
+nodes/BatAnim/position = Vector2(-200, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_wj7s2")
+nodes/TimeScale/position = Vector2(40, 140)
+node_connections = [&"TimeScale", 0, &"BatAnim", &"output", 0, &"TimeScale"]
+
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -21,7 +124,9 @@ script = ExtResource("1_dwqwl")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("2_oe8fk")
-region_enabled = true
+hframes = 4
+vframes = 4
+frame = 1
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,3 +141,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_awmdv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_26wxy")
 value = 100.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x6fv2")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_i4oil")
+anim_player = NodePath("../AnimationPlayer")
+parameters/BatAnim/Move/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.0
+
+[node name="BatAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("3_furvv")
+animation_tree = NodePath("../AnimationTree")
