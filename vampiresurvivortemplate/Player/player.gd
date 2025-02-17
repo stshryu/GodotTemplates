@@ -10,6 +10,7 @@ signal weapon_upgrade_picked_up
 @onready var playerstats: PlayerStats = PlayerStats.new()
 @onready var player_ability_node = %ability_ui_control
 @onready var animation_tree = %AnimationTree
+@onready var test_teleport_anim: AnimatedSprite2D = $teleport_end_effect
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
@@ -33,6 +34,8 @@ func _ready():
 	player_upgrades.append(player_level)
 	var dash = player_ability_node.get_child(0)
 	dash.set_parent(self)
+	var teleport = player_ability_node.get_child(1)
+	teleport.set_parent(self)
 	_display_player_stats()
 	_display_weapon_stats()
 
@@ -53,6 +56,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash"):
 		var dash = player_ability_node.get_child(0)
 		dash.use_ability()
+	
+	if Input.is_action_just_pressed("teleport"):
+		var teleport = player_ability_node.get_child(1)
+		teleport.use_ability()
 	
 	if can_be_damaged:
 		var overlapping_mobs = hurtbox.get_overlapping_bodies()
@@ -109,3 +116,6 @@ func _display_weapon_stats():
 	%PlayerStats.append_text("Sword:\n")
 	for key in swordstats:
 		%PlayerStats.append_text(basestr % [key, swordstats[key]])
+
+func _on_teleport_end_effect_animation_finished():
+	test_teleport_anim.visible = false

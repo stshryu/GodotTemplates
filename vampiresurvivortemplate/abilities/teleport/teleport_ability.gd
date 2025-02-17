@@ -1,25 +1,23 @@
-class_name DashAbility
+class_name TeleportAbility
 extends Node2D
 
 @onready var sprite: Sprite2D = %ui_sprite
 @onready var cooldown_text: RichTextLabel = %cooldown_text
 @onready var cooldown_timer: Timer = %cooldown_timer
-@onready var dash_duration_timer: Timer = %dash_duration_timer
+@onready var cast_timer: Timer = %cast_timer
 
-@export var dash_distance: Vector2 = Vector2(50.0,50.0)
-@export var dash_cooldown: float = 2.5
-@export var dash_duration: float = 0.25
-@export var dash_speed_modifier: float = 500.0
+@export var teleport_distance: Vector2 = Vector2(100.0,100.0)
+@export var teleport_cooldown: float = 0.75
+@export var teleport_cast_time: float = 0.5
 
 var is_usable = true
 var parent_entity # Must be set before dashing can work
-var alternate_dash: bool = true
 
 func _ready():
-	cooldown_timer.wait_time = dash_cooldown
+	cooldown_timer.wait_time = teleport_cooldown
 	cooldown_timer.one_shot = true
-	dash_duration_timer.wait_time = dash_duration
-	dash_duration_timer.one_shot = true
+	cast_timer.wait_time = teleport_cast_time
+	cast_timer.one_shot = true
 	cooldown_text.visible = false
 	
 func set_parent(entity):
@@ -32,22 +30,24 @@ func _process(_delta):
 		cooldown_text.text = cooldown_remaining
 
 func use_ability():
-	if is_usable and parent_entity.is_moving and parent_entity.can_act:
-		start_dash_action_lockout()
+	if is_usable and parent_entity.can_act:
+		start_casting()
 		start_cooldown_timer()
 		toggle_greyscale()
 
+func _finish_teleport():
+	var mouse_direction = _get_mouse_direction_normalized()
+	parent_entity.global_position += teleport_distance * mouse_direction
+	
 func start_cooldown_timer():
 	cooldown_timer.start()
 	is_usable = false
 	
-func start_dash_action_lockout():
-	dash_duration_timer.start()
+func start_casting():
+	cast_timer.start()
 	parent_entity.can_act = false
-	parent_entity.can_be_damaged = false
-	parent_entity.playerstats.movement_speed += dash_speed_modifier
-	if alternate_dash: # Alternate dashing allows movement to be independent of dash direction
-		parent_entity.last_direction = _get_mouse_direction_normalized()
+	parent_entity.can_move = false
+	parent_entity.is_casting = true
 
 func _get_mouse_direction_normalized() -> Vector2:
 	var view_mouse = get_viewport().get_mouse_position()
@@ -66,7 +66,12 @@ func _on_cooldown_timer_timeout():
 	cooldown_text.visible = false
 	toggle_greyscale()
 
-func _on_dash_duration_timer_timeout():
+func _on_cast_timer_timeout():
+	_finish_teleport()
+	# test
+	parent_entity.test_teleport_anim.visible = true
+	parent_entity.test_teleport_anim.play("default", 4.0)
+	# test
 	parent_entity.can_act = true
-	parent_entity.can_be_damaged = true
-	parent_entity.playerstats.movement_speed -= dash_speed_modifier
+	parent_entity.can_move = true
+	parent_entity.is_casting = false

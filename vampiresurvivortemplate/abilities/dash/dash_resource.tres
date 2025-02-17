@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://s6a3dwbauc0y" path="res://abilities/dash/dash_ability.tscn" id="1_7qe8k"]
 [ext_resource type="Script" path="res://abilities/ability_scene_resource.gd" id="1_of74m"]
-[ext_resource type="Texture2D" uid="uid://pljk7xykg8nq" path="res://art/BookIce.png" id="2_d85u4"]
+[ext_resource type="Texture2D" uid="uid://d4db3xgn5vscc" path="res://art/steebWsmall.png" id="2_g785y"]
 
 [resource]
 script = ExtResource("1_of74m")
-overworld_ability_name = "dash"
-overworld_ability_texture = ExtResource("2_d85u4")
+ability_name = "dash"
+overworld_ability_texture = ExtResource("2_g785y")
 ability_scene = ExtResource("1_7qe8k")

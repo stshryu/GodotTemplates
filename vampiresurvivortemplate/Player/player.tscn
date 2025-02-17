@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ddfcl58tgwsj7"]
+[gd_scene load_steps=34 format=3 uid="uid://ddfcl58tgwsj7"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Player/player_animation.gd" id="5_oiu4p"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dss6ssjg4kmku" path="res://animation/playeranimation.tres" id="6_dcus4"]
 [ext_resource type="PackedScene" uid="uid://s6a3dwbauc0y" path="res://abilities/dash/dash_ability.tscn" id="7_30b1c"]
+[ext_resource type="PackedScene" uid="uid://ihum5xvgxhvf" path="res://abilities/teleport/teleport_ability.tscn" id="8_56ewm"]
+[ext_resource type="Texture2D" uid="uid://ce416tgfp4v0y" path="res://art/SpriteSheetSpark.png" id="9_hrey1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbshb"]
 size = Vector2(14, 14)
@@ -33,6 +35,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j63dj"]
+resource_name = "casting"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_oe2v8"]
@@ -171,6 +188,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6um0b"]
 _data = {
 "RESET": SubResource("Animation_bbymw"),
+"casting": SubResource("Animation_j63dj"),
 "idledown": SubResource("Animation_oe2v8"),
 "idleleft": SubResource("Animation_4mv3n"),
 "idleright": SubResource("Animation_f5ob5"),
@@ -184,12 +202,63 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yl6so"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y07sp"]
+graph_offset = Vector2(-791.536, -38.5593)
 nodes/PlayerStates/node = ExtResource("6_dcus4")
 nodes/PlayerStates/position = Vector2(-320, 20)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_yl6so")
 nodes/TimeScale/position = Vector2(-40, -20)
 nodes/output/position = Vector2(160, 140)
 node_connections = [&"TimeScale", 0, &"PlayerStates", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpitj"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lljja"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beeud"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_try8f"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo688"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj610"]
+atlas = ExtResource("9_hrey1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj8s0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpitj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lljja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beeud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_try8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo688")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj610")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 platform_floor_layers = 4294901760
@@ -271,6 +340,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="ability_ui_control" type="HBoxContainer" parent="ability_canvas"]
 unique_name_in_owner = true
+layout_direction = 2
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -280,7 +350,15 @@ grow_vertical = 0
 
 [node name="DashAbility" parent="ability_canvas/ability_ui_control" instance=ExtResource("7_30b1c")]
 
+[node name="TeleportAbility" parent="ability_canvas/ability_ui_control" instance=ExtResource("8_56ewm")]
+position = Vector2(59, 1)
+
+[node name="teleport_end_effect" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_tj8s0")
+
 [connection signal="upgrade_picked_up" from="." to="Bow" method="_on_player_upgrade_picked_up"]
 [connection signal="upgrade_picked_up" from="." to="Sword" method="_on_player_upgrade_picked_up"]
 [connection signal="weapon_upgrade_picked_up" from="." to="Bow" method="_on_player_weapon_upgrade_picked_up"]
 [connection signal="weapon_upgrade_picked_up" from="." to="Sword" method="_on_player_weapon_upgrade_picked_up"]
+[connection signal="animation_finished" from="teleport_end_effect" to="." method="_on_teleport_end_effect_animation_finished"]
