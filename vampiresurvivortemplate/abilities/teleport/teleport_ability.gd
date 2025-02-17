@@ -11,7 +11,10 @@ extends Node2D
 @export var teleport_cast_time: float = 0.5
 
 var is_usable = true
-var parent_entity # Must be set before dashing can work
+var alternate_cast = false # Alt cast locks teleport position to when the cast started, not when cast finishes
+var mouse_direction: Vector2
+var parent_entity # Must be set before teleporting can work
+
 
 func _ready():
 	cooldown_timer.wait_time = teleport_cooldown
@@ -31,12 +34,15 @@ func _process(_delta):
 
 func use_ability():
 	if is_usable and parent_entity.can_act:
+		if alternate_cast:
+			mouse_direction = _get_mouse_direction_normalized()
 		start_casting()
 		start_cooldown_timer()
 		toggle_greyscale()
 
 func _finish_teleport():
-	var mouse_direction = _get_mouse_direction_normalized()
+	if not alternate_cast:
+		mouse_direction = _get_mouse_direction_normalized()
 	parent_entity.global_position += teleport_distance * mouse_direction
 	
 func start_cooldown_timer():
