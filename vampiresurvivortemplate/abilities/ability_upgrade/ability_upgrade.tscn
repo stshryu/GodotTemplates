@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ytrb3ll650t"]
+
+[ext_resource type="Script" path="res://abilities/ability_upgrade/ability_upgrade.gd" id="1_dpcmy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rd4wa"]
+
+[node name="ability_upgrade" type="Area2D" node_paths=PackedStringArray("overworld_ability_name", "overworld_ability_sprite")]
+script = ExtResource("1_dpcmy")
+overworld_ability_name = NodePath("ability_name")
+overworld_ability_sprite = NodePath("overworld_ability_sprite")
+
+[node name="overworld_ability_sprite" type="Sprite2D" parent="."]
+
+[node name="ability_name" type="RichTextLabel" parent="."]
+offset_left = -20.0
+offset_top = -51.0
+offset_right = 20.0
+offset_bottom = -11.0
+
+[node name="pickup_hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rd4wa")

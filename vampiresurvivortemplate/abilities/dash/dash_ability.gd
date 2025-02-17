@@ -13,7 +13,7 @@ extends Node2D
 
 var is_usable = true
 var parent_entity # Must be set before dashing can work
-var alternate_dash: bool = false
+var alternate_dash: bool = true
 
 func _ready():
 	cooldown_timer.wait_time = dash_cooldown
@@ -47,11 +47,14 @@ func start_dash_action_lockout():
 	parent_entity.can_be_damaged = false
 	parent_entity.playerstats.movement_speed += dash_speed_modifier
 	if alternate_dash: # Alternate dashing allows movement to be independent of dash direction
-		var view_mouse = get_viewport().get_mouse_position()
-		var view_center = get_viewport_rect().size/2.0
-		var normalized_mouse_positional_angle = (view_mouse - view_center).normalized()
-		parent_entity.last_direction = normalized_mouse_positional_angle
+		parent_entity.last_direction = _get_mouse_direction_normalized()
 
+func _get_mouse_direction_normalized() -> Vector2:
+	var view_mouse = get_viewport().get_mouse_position()
+	var view_center = get_viewport_rect().size/2.0
+	var normalized_mouse_direction = (view_mouse - view_center).normalized()
+	return normalized_mouse_direction 
+	
 func toggle_greyscale():
 	if sprite.modulate == Color.DIM_GRAY:
 		sprite.modulate = Color(1,1,1)
