@@ -1,15 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bff3m3vh3yae1"]
+[gd_scene load_steps=5 format=3 uid="uid://bff3m3vh3yae1"]
 
 [ext_resource type="PackedScene" uid="uid://ddfcl58tgwsj7" path="res://Player/player.tscn" id="1_y6yuw"]
 [ext_resource type="Script" path="res://game/game.gd" id="1_yi5op"]
-[ext_resource type="PackedScene" uid="uid://bk6tf1huuek6h" path="res://game/Upgrades/upgrades.tscn" id="2_smg8y"]
-[ext_resource type="Resource" uid="uid://dlu8fhovv48ef" path="res://game/Resources/damage.tres" id="4_4ue01"]
-[ext_resource type="Resource" uid="uid://c4e82ayeiwn2g" path="res://game/Resources/pierce.tres" id="5_mo33r"]
-[ext_resource type="PackedScene" uid="uid://5ytrb3ll650t" path="res://abilities/ability_upgrade/ability_upgrade.tscn" id="6_62ldy"]
 [ext_resource type="PackedScene" uid="uid://dbbj3q56ynr0u" path="res://game/items/expitem/expdrop.tscn" id="6_k1w3r"]
-[ext_resource type="Resource" uid="uid://bnmrpfcvaiwor" path="res://abilities/dash/dash_resource.tres" id="7_kbn7e"]
-[ext_resource type="PackedScene" uid="uid://t2uwocug8ong" path="res://game/Upgrades/weapon_upgrades.tscn" id="7_l4ora"]
-[ext_resource type="Resource" uid="uid://dx4mi38gwdokr" path="res://game/Resources/projectile.tres" id="8_tko57"]
 
 [sub_resource type="Curve2D" id="Curve2D_5eoh7"]
 _data = {
@@ -32,34 +25,9 @@ unique_name_in_owner = true
 position = Vector2(-120, -120)
 rotation = 1.5708
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-z_index = -1
-offset_right = 480.0
-offset_bottom = 320.0
-color = Color(0.270222, 0.270222, 0.270222, 1)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="Upgrades" parent="." instance=ExtResource("2_smg8y")]
-position = Vector2(216, 72)
-ammo_strategy = ExtResource("4_4ue01")
-
-[node name="Upgrades2" parent="." instance=ExtResource("2_smg8y")]
-position = Vector2(72, 160)
-ammo_strategy = ExtResource("5_mo33r")
-
-[node name="ability_upgrade" parent="." instance=ExtResource("6_62ldy")]
-ability = ExtResource("7_kbn7e")
-
-[node name="WeaponUpgrades" parent="." instance=ExtResource("7_l4ora")]
-position = Vector2(50, 113)
-upgrade_name = "Projectile"
-weapon_strategy = ExtResource("8_tko57")
 
 [node name="ExpContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
