@@ -247,6 +247,7 @@ color = Color(0.362443, 0.305441, 0.268623, 1)
 position = Vector2(352, 421)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_drrfa")
+autoplay = "default"
 frame_progress = 0.00393699
 speed_scale = 0.75
 
@@ -254,11 +255,13 @@ speed_scale = 0.75
 position = Vector2(785, 278)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0mhka")
+autoplay = "default"
 
 [node name="PrincessSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(579, 561)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cdpc7")
+autoplay = "default"
 frame = 6
 frame_progress = 0.211961
 speed_scale = 0.5
