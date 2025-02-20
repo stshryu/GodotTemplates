@@ -8,11 +8,13 @@ extends BaseEntity
 var mobstats: EnemyStats = EnemyStats.new()
 
 func _physics_process(delta):
-	move_towards_player()
+	if can_act:
+		move_towards_player()
 
 func move_towards_player():
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * mobstats.movement_speed
+	is_moving = true if velocity else false
 	move_and_slide()
 
 func take_damage(amount: float):

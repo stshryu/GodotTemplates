@@ -11,22 +11,17 @@ signal weapon_upgrade_picked_up
 @onready var player_ability_node = %ability_ui_control
 @onready var animation_tree = %AnimationTree
 @onready var test_teleport_anim: AnimatedSprite2D = $teleport_end_effect
+@onready var pause_menu: PackedScene = preload("res://ui_elements/pause_menu.tscn")
 
 var player_upgrades: Array[BaseAmmoStrategy] = []
 var player_weapon_upgrades: Array[BaseWeaponStrategy] = []
 var player_level: LevelUpAmmoStrategy
 var current_health: float
+var pause
 
 ### Player entity related properties
 var last_facing_direction := Vector2(0,-1)
 var last_direction := Vector2.ZERO
-
-### Player control related properties
-var can_act: bool = true
-var can_move: bool = true
-var is_moving: bool = false
-var is_casting: bool = false
-var can_be_damaged: bool = true
 
 func _ready():
 	player_level = LevelUpAmmoStrategy.new()
@@ -36,6 +31,8 @@ func _ready():
 	dash.set_parent(self)
 	var teleport = player_ability_node.get_child(1)
 	teleport.set_parent(self)
+	pause = pause_menu.instantiate()
+	self.add_child(pause)
 	_display_player_stats()
 	_display_weapon_stats()
 
@@ -61,6 +58,13 @@ func _physics_process(delta):
 		var teleport = player_ability_node.get_child(1)
 		teleport.use_ability()
 	
+	### TODO:
+	### Mapping everything on the player seems incorrect, should consider handling all the scene
+	### transitions through a scene manager that'll be able to move the player, and the constituent
+	### nodes throughout the various game states.
+	if Input.is_action_just_pressed("pause"):
+		pause.pause()
+		
 	if can_be_damaged:
 		var overlapping_mobs = hurtbox.get_overlapping_bodies()
 		if overlapping_mobs.size() > 0:

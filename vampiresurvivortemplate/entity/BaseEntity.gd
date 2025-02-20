@@ -4,6 +4,13 @@ extends CharacterBody2D
 var entity_abilities: Dictionary = {}
 var enabled_abilities: Array[String] = []
 
+### Entity control related properties
+var can_act: bool = true
+var can_move: bool = true
+var is_moving: bool = false
+var is_casting: bool = false
+var can_be_damaged: bool = true
+
 func add_ability_to_entity(new_ability: ability_scene_resource):
 	var ability_name = new_ability.ability_name
 	var ability_scene = new_ability.ability_scene

@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://b10y35k5eubbg"]
+
+[ext_resource type="Texture2D" uid="uid://dbgmi2jiq7j3r" path="res://art/button_normal.png" id="1_3v7ek"]
+[ext_resource type="Script" path="res://ui_elements/pause_menu.gd" id="1_gapt3"]
+[ext_resource type="Texture2D" uid="uid://chiyv5vu0kuvd" path="res://art/button_pressed.png" id="2_54xqa"]
+[ext_resource type="Texture2D" uid="uid://c4tip8nqvyb0t" path="res://art/button_hover.png" id="3_qf08w"]
+[ext_resource type="Texture2D" uid="uid://cwmektglb7ktx" path="res://art/button_disabled.png" id="4_4d66q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mq5st"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gapt3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+process_mode = 3
+layout_mode = 2
+color = Color(0.360784, 0.305882, 0.266667, 0.72549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+texture_normal = ExtResource("1_3v7ek")
+texture_pressed = ExtResource("2_54xqa")
+texture_hover = ExtResource("3_qf08w")
+texture_disabled = ExtResource("4_4d66q")
+stretch_mode = 0
+
+[node name="ResumeText" type="Label" parent="PanelContainer/VBoxContainer/ResumeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_3v7ek")
+texture_pressed = ExtResource("2_54xqa")
+texture_hover = ExtResource("3_qf08w")
+texture_disabled = ExtResource("4_4d66q")
+stretch_mode = 0
+
+[node name="RestartText" type="Label" parent="PanelContainer/VBoxContainer/RestartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+texture_normal = ExtResource("1_3v7ek")
+texture_pressed = ExtResource("2_54xqa")
+texture_hover = ExtResource("3_qf08w")
+texture_disabled = ExtResource("4_4d66q")
+stretch_mode = 0
+
+[node name="ExitText" type="Label" parent="PanelContainer/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_mq5st")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.419608)
