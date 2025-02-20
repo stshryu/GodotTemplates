@@ -7,7 +7,7 @@ extends Node2D
 @onready var cast_timer: Timer = %cast_timer
 
 @export var teleport_distance: Vector2 = Vector2(100.0,100.0)
-@export var teleport_cooldown: float = 0.75
+@export var teleport_cooldown: float = 1.5
 @export var teleport_cast_time: float = 0.5
 
 var is_usable = true
