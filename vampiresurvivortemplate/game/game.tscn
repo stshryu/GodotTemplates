@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5eoh7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -120, -120, 0, 0, 0, 0, -120, 232, 0, 0, 0, 0, 392, 232, 0, 0, 0, 0, 392, -120, 0, 0, 0, 0, -120, -120)
+"points": PackedVector2Array(0, 0, 0, 0, -296, -168, 0, 0, 0, 0, -296, 336, 0, 0, 0, 0, 128, 336, 0, 0, 0, 0, 552, 336, 0, 0, 0, 0, 552, -168, 0, 0, 0, 0, -296, -168)
 }
-point_count = 5
+point_count = 6
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yi5op")
@@ -17,12 +17,13 @@ script = ExtResource("1_yi5op")
 position = Vector2(224, 160)
 
 [node name="Path2D" type="Path2D" parent="Player"]
-position = Vector2(-120, -56)
+position = Vector2(-120, -98.6667)
+scale = Vector2(1, 1.12698)
 curve = SubResource("Curve2D_5eoh7")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
-position = Vector2(-120, -120)
+position = Vector2(-296, -168)
 rotation = 1.5708
 
 [node name="Timer" type="Timer" parent="."]
