@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://04g2ch8i33gx"]
+[gd_scene load_steps=11 format=3 uid="uid://04g2ch8i33gx"]
 
 [ext_resource type="Script" path="res://game/player.gd" id="1_i0uap"]
 [ext_resource type="Script" path="res://game/game_world.gd" id="1_ia2dv"]
 [ext_resource type="Texture2D" uid="uid://ncp14m421mh6" path="res://assets/Heroes/Knight/Idle/Idle-Sheet.png" id="1_sip6v"]
+[ext_resource type="PackedScene" uid="uid://ya6qbmhtt8jl" path="res://game/items/boots/item_ui_boots.tscn" id="4_qf0la"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_coeus"]
 atlas = ExtResource("1_sip6v")
@@ -68,3 +69,6 @@ offset_left = 144.0
 offset_top = 72.0
 offset_right = 184.0
 offset_bottom = 112.0
+
+[node name="ItemUI_BOOTS" parent="." instance=ExtResource("4_qf0la")]
+position = Vector2(93.2855, 28.5873)

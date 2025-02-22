@@ -8,6 +8,7 @@ var property_value
 
 # Item Metadata
 var tags: Array[String]
+var modifier_type: ItemMetadata.ModifierEnum
 var crafting_weight: float
 
 # Tier bands handle the range of mods a property can roll. This dictionary should hold a subset of 
@@ -34,3 +35,25 @@ func roll_property(item_level: int):
 	weights = PackedFloat32Array(weights)
 	var key = values[rng.rand_weighted(weights)]
 	property_value = rng.randi_range(item_tier_bands[key][0], item_tier_bands[key][1])
+
+### Debugging the weights to ensure that the modifier types are matching our weights we defined.
+func _debug_weights(item_level: int, debug_limit: int):
+	var debug_bucket: Array = []
+	for i in range(0, debug_limit):
+		roll_property(item_level)
+		debug_bucket.append(self.property_value)
+	var debug_expected_output: Dictionary = {}
+	var max_weighted_val: int = 0
+	for key in item_tier_bands.keys():
+		max_weighted_val += item_tier_bands[key][2]
+	for key in item_tier_bands.keys():
+		debug_expected_output[key] = debug_limit * (float(item_tier_bands[key][2]) / float(max_weighted_val))
+	var debug_actual_output: Dictionary = {}
+	for key in item_tier_bands.keys():
+		var count = 0
+		for i in debug_bucket:
+			if item_tier_bands[key][0] < i and i <= item_tier_bands[key][1]:
+				count += 1
+		debug_actual_output[key] = count
+	print(debug_expected_output)
+	print(debug_actual_output)

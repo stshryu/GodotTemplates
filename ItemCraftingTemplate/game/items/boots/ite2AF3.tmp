@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ya6qbmhtt8jl"]
+
+[ext_resource type="Script" path="res://game/items/boots/item_ui_boots.gd" id="1_w5n7h"]
+[ext_resource type="Texture2D" uid="uid://bf1neisdmfhvb" path="res://assets/Social/boot.png" id="2_45r72"]
+
+[node name="ItemUI_BOOTS" type="Node2D"]
+script = ExtResource("1_w5n7h")
+item_name = "Boots"
+item_sprite = ExtResource("2_45r72")
+
+[node name="BootSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="BootName" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 24.0
+offset_bottom = -17.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = -72.0
+offset_top = -32.0
+offset_right = -27.0
+offset_bottom = -1.0
+text = "craft"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
