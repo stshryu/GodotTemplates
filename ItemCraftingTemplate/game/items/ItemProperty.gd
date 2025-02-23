@@ -43,17 +43,18 @@ func _debug_weights(item_level: int, debug_limit: int):
 		roll_property(item_level)
 		debug_bucket.append(self.property_value)
 	var debug_expected_output: Dictionary = {}
+	var debug_actual_output: Dictionary = {}
 	var max_weighted_val: int = 0
 	for key in item_tier_bands.keys():
 		max_weighted_val += item_tier_bands[key][2]
 	for key in item_tier_bands.keys():
 		debug_expected_output[key] = debug_limit * (float(item_tier_bands[key][2]) / float(max_weighted_val))
-	var debug_actual_output: Dictionary = {}
-	for key in item_tier_bands.keys():
 		var count = 0
 		for i in debug_bucket:
 			if item_tier_bands[key][0] < i and i <= item_tier_bands[key][1]:
 				count += 1
 		debug_actual_output[key] = count
+	print("Expected Weightings")
 	print(debug_expected_output)
+	print("Actual Weightings")
 	print(debug_actual_output)

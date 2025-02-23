@@ -10,6 +10,7 @@ item_sprite = ExtResource("2_45r72")
 
 [node name="BootSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0.0600739, 0.408157)
 
 [node name="BootName" type="Label" parent="."]
 unique_name_in_owner = true
@@ -19,18 +20,26 @@ offset_right = 24.0
 offset_bottom = -17.0
 
 [node name="Craft" type="Button" parent="."]
-offset_left = -72.0
-offset_top = -32.0
-offset_right = -27.0
-offset_bottom = -1.0
+offset_left = 8.0
+offset_top = -80.0
+offset_right = 53.0
+offset_bottom = -49.0
 text = "craft"
 
 [node name="GetItemProp" type="Button" parent="."]
-offset_left = -168.0
-offset_top = 8.0
-offset_right = -52.0
-offset_bottom = 39.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = -4.0
+offset_bottom = -49.0
 text = "Get Item Prop"
+
+[node name="BootProperties" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = -88.0
+offset_top = 24.0
+offset_right = 88.0
+offset_bottom = 104.0
+theme_override_font_sizes/normal_font_size = 10
 
 [connection signal="pressed" from="Craft" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GetItemProp" to="." method="_on_get_item_prop_pressed"]

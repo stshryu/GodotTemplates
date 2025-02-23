@@ -64,11 +64,5 @@ shape = SubResource("RectangleShape2D_ne4bb")
 
 [node name="Viewport" type="Camera2D" parent="Player"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 144.0
-offset_top = 72.0
-offset_right = 184.0
-offset_bottom = 112.0
-
 [node name="ItemUI_BOOTS" parent="." instance=ExtResource("4_qf0la")]
 position = Vector2(93.2855, 28.5873)

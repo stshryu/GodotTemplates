@@ -3,23 +3,42 @@ extends BaseItem
 
 @onready var boot_sprite: Sprite2D = %BootSprite
 @onready var boot_name: Label = %BootName
+@onready var item_properties_label: RichTextLabel = %BootProperties
+
+var has_been_rerolled
 
 func _ready():
 	boot_sprite.texture = item_sprite
 	boot_name.text = item_name
-	item_level = 20
+	item_level = 100
 	item_quality = 100
+	set_mod_pool()
+
+func set_mod_pool():
+	mod_pool = [
+		MaxLife.new(),
+		MaxMana.new(),
+		MovementSpeed.new()
+	]
+
+func set_item_properties():
+	item_properties_label.text = ""
+	for key in item_properties:
+		for i in item_properties[key]:
+			item_properties_label.append_text("+%s %s\n" % [i.property_name, i.property_value])
 
 func roll_modifiers():
-	var modifier = MaxLife.new()
-	modifier._debug_weights(30, 1000)
-	var item_prop = modifier.add_to_item(self)
-	item_properties[modifier.modifier_type].append(item_prop)
+	reset_item() # clear it before we add more props
+	for modifier in mod_pool:
+		var item_prop = modifier.add_to_item(self)
+		item_properties[modifier.modifier_type].append(item_prop)
+	set_item_properties()
 
 func _on_button_pressed():
 	roll_modifiers()
 
 func _on_get_item_prop_pressed():
+	print("------")
 	for key in item_properties:
 		for item in item_properties[key]:
 			print(item.property_key)

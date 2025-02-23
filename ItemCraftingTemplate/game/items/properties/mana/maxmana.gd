@@ -1,9 +1,9 @@
-class_name MaxLife
+class_name MaxMana
 extends ItemProperty
 
 func _init():
-	property_key = "maximum_life"
-	property_name = "Maximum Life"
+	property_key = "maximum_mana"
+	property_name = "Maximum Mana"
 	modifier_type = ItemMetadata.ModifierEnum.PREFIX
 	set_item_tier_bands()
 
