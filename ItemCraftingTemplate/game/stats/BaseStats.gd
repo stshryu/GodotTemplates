@@ -25,3 +25,10 @@ func heal_damage(amount: float):
 func take_damage(amount: float):
 	current_health -= amount
 	if current_health < 0: current_health = 0
+
+func get_custom_properties():
+	var response = {}
+	for property in self.get_property_list():
+		if property["usage"] == 4102:
+			response[property["name"]] = self.get(property["name"])
+	return response

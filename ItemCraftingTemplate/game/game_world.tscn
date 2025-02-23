@@ -1,68 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://04g2ch8i33gx"]
+[gd_scene load_steps=4 format=3 uid="uid://04g2ch8i33gx"]
 
-[ext_resource type="Script" path="res://game/player.gd" id="1_i0uap"]
 [ext_resource type="Script" path="res://game/game_world.gd" id="1_ia2dv"]
-[ext_resource type="Texture2D" uid="uid://ncp14m421mh6" path="res://assets/Heroes/Knight/Idle/Idle-Sheet.png" id="1_sip6v"]
+[ext_resource type="PackedScene" uid="uid://n5w50watdfmf" path="res://game/player.tscn" id="2_ydd3q"]
 [ext_resource type="PackedScene" uid="uid://ya6qbmhtt8jl" path="res://game/items/boots/item_ui_boots.tscn" id="4_qf0la"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_coeus"]
-atlas = ExtResource("1_sip6v")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljigq"]
-atlas = ExtResource("1_sip6v")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2gq8"]
-atlas = ExtResource("1_sip6v")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mlv5"]
-atlas = ExtResource("1_sip6v")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sq8du"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_coeus")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ljigq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g2gq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mlv5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne4bb"]
-size = Vector2(16, 24)
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_ia2dv")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-z_index = 1
-z_as_relative = false
-script = ExtResource("1_i0uap")
-
-[node name="BasicPlayerSprite" type="AnimatedSprite2D" parent="Player"]
-sprite_frames = SubResource("SpriteFrames_sq8du")
-autoplay = "default"
-frame = 3
-frame_progress = 0.38664
-
-[node name="HitBox" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_ne4bb")
-
-[node name="Viewport" type="Camera2D" parent="Player"]
+[node name="Player" parent="." instance=ExtResource("2_ydd3q")]
 
 [node name="ItemUI_BOOTS" parent="." instance=ExtResource("4_qf0la")]
 position = Vector2(93.2855, 28.5873)

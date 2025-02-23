@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://n5w50watdfmf"]
+
+[ext_resource type="Script" path="res://game/player.gd" id="1_efayn"]
+[ext_resource type="Texture2D" uid="uid://ncp14m421mh6" path="res://assets/Heroes/Knight/Idle/Idle-Sheet.png" id="2_2x0i3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coeus"]
+atlas = ExtResource("2_2x0i3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljigq"]
+atlas = ExtResource("2_2x0i3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2gq8"]
+atlas = ExtResource("2_2x0i3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mlv5"]
+atlas = ExtResource("2_2x0i3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sq8du"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coeus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljigq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2gq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mlv5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne4bb"]
+size = Vector2(16, 24)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_efayn")
+
+[node name="BasicPlayerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sq8du")
+autoplay = "default"
+frame = 3
+frame_progress = 0.38664
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ne4bb")
+
+[node name="Viewport" type="Camera2D" parent="."]
+
+[node name="PlayerStats" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = -48.0
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
