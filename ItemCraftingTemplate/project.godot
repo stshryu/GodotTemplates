@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Util="*res://util/util.gd"
+Logger="*res://util/Logger.gd"
 
 [input]
 

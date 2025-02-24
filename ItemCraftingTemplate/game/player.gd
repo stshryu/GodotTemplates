@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var playerstatlabel: RichTextLabel = %PlayerStats
 @onready var playerstats: BaseStats = BaseStats.new()
+@onready var playerequipment: BaseEquipment = BaseEquipment.new()
 
 var need_to_update_stats: bool = false
 
@@ -23,3 +24,7 @@ func _on_stat_changed():
 func _update_stats():
 	need_to_update_stats = false
 	playerstatlabel.text = Util.get_formatted_stats(playerstats)
+	
+func equip_item(slot: EquipmentMetadata.EquipmentSlot, item: BaseItem):
+	playerequipment.equip_item(slot, item)
+		

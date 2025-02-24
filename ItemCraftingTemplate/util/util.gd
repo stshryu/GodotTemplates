@@ -9,4 +9,3 @@ func get_formatted_stats(stats: BaseStats) -> String:
 		resp.append(basestr % [key, stats[key]])
 	resp.append("[center]")
 	return "".join(resp)
- 

@@ -4,14 +4,18 @@ extends BaseItem
 @onready var boot_sprite: Sprite2D = %BootSprite
 @onready var boot_name: Label = %BootName
 @onready var item_properties_label: RichTextLabel = %BootProperties
+@onready var player = get_tree().root.get_node("GameWorld/Player")
 
 var has_been_rerolled
+signal equip
 
 func _ready():
 	boot_sprite.texture = item_sprite
 	boot_name.text = item_name
+	equipment_slot = EquipmentMetadata.EquipmentSlot.BOOTS
 	item_level = 100
 	item_quality = 100
+	
 	set_mod_pool()
 
 func set_mod_pool():
@@ -20,7 +24,7 @@ func set_mod_pool():
 		MaxMana.new(),
 		MovementSpeed.new()
 	]
-
+	
 func set_item_properties():
 	item_properties_label.text = ""
 	for key in item_properties:
@@ -36,6 +40,9 @@ func roll_modifiers():
 
 func _on_button_pressed():
 	roll_modifiers()
+	
+func _on_equip_pressed():
+	player.equip_item(equipment_slot, self)
 
 func _on_get_item_prop_pressed():
 	print("------")

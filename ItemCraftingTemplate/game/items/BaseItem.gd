@@ -10,6 +10,7 @@ var item_properties: Dictionary = {}
 var mod_pool: Array[ItemProperty] = []
 var item_quality: int
 var item_level: int
+var equipment_slot: EquipmentMetadata.EquipmentSlot
 
 func _init():
 	reset_item()

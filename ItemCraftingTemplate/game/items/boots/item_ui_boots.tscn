@@ -20,18 +20,25 @@ offset_right = 24.0
 offset_bottom = -17.0
 
 [node name="Craft" type="Button" parent="."]
-offset_left = 8.0
+offset_left = -24.0
 offset_top = -80.0
-offset_right = 53.0
+offset_right = 21.0
 offset_bottom = -49.0
 text = "craft"
 
 [node name="GetItemProp" type="Button" parent="."]
-offset_left = -120.0
+offset_left = -144.0
 offset_top = -80.0
-offset_right = -4.0
+offset_right = -28.0
 offset_bottom = -49.0
 text = "Get Item Prop"
+
+[node name="Equip" type="Button" parent="."]
+offset_left = 24.0
+offset_top = -80.0
+offset_right = 76.0
+offset_bottom = -49.0
+text = "Equip"
 
 [node name="BootProperties" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -43,3 +50,4 @@ theme_override_font_sizes/normal_font_size = 10
 
 [connection signal="pressed" from="Craft" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GetItemProp" to="." method="_on_get_item_prop_pressed"]
+[connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
