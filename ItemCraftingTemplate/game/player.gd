@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var playerstats: BaseStats = BaseStats.new()
 @onready var playerequipment: BaseEquipment = BaseEquipment.new()
 
-var need_to_update_stats: bool = false
+var need_to_update_stats: bool = true
 
 func _ready():
 	pass
@@ -15,11 +15,8 @@ func _physics_process(_delta):
 	velocity = direction * playerstats.movement_speed
 	move_and_slide()
 	
-	#if need_to_update_stats:
-	_update_stats()
-
-func _on_stat_changed():
-	need_to_update_stats = true
+	if need_to_update_stats:
+		_update_stats()
 
 func _update_stats():
 	need_to_update_stats = false
@@ -28,3 +25,8 @@ func _update_stats():
 func equip_item(slot: EquipmentMetadata.EquipmentSlot, item: BaseItem):
 	playerequipment.equip_item(slot, item)
 		
+func _on_testing_pressed():
+	playerstats.parse_equipment_stats(playerequipment.calculate_all_equipment_slots())
+	need_to_update_stats = true
+	#playerequipment.calculate_equipment_slot(EquipmentMetadata.EquipmentSlot.BOOTS)
+	

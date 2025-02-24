@@ -2,7 +2,7 @@ class_name MovementSpeed
 extends ItemProperty
 
 func _init():
-	property_key = "movement_speed"
+	property_key = StatMetadata.StatEnum.MOVEMENT_SPEED
 	property_name = "Movement Speed"
 	modifier_type = ItemMetadata.ModifierEnum.SUFFIX
 	set_item_tier_bands()

@@ -2,7 +2,7 @@ class_name MaxLife
 extends ItemProperty
 
 func _init():
-	property_key = "maximum_life"
+	property_key = StatMetadata.StatEnum.MAXIMUM_LIFE
 	property_name = "Maximum Life"
 	modifier_type = ItemMetadata.ModifierEnum.PREFIX
 	set_item_tier_bands()

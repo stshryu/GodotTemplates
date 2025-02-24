@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqq53ui25b8fh"]
+
+[ext_resource type="Script" path="res://game/items/helmet/item_ui_helmet.gd" id="1_qdqao"]
+[ext_resource type="Texture2D" uid="uid://6wtuao676lvb" path="res://assets/Social/helmet.png" id="2_s0rso"]
+
+[node name="ItemUI_HELMET" type="Node2D"]
+script = ExtResource("1_qdqao")
+item_name = "Helmet"
+item_sprite = ExtResource("2_s0rso")
+
+[node name="HelmetSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HelmetName" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 24.0
+offset_bottom = -17.0
+
+[node name="HelmetProperties" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = -56.0
+offset_top = 24.0
+offset_right = 56.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 10
+
+[node name="Craft" type="Button" parent="."]
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 21.0
+offset_bottom = -49.0
+text = "craft"
+
+[node name="GetItemProp" type="Button" parent="."]
+offset_left = -144.0
+offset_top = -80.0
+offset_right = -28.0
+offset_bottom = -49.0
+text = "Get Item Prop"
+
+[node name="Equip" type="Button" parent="."]
+offset_left = 24.0
+offset_top = -80.0
+offset_right = 76.0
+offset_bottom = -49.0
+text = "Equip"
+
+[connection signal="pressed" from="Craft" to="." method="_on_craft_pressed"]
+[connection signal="pressed" from="GetItemProp" to="." method="_on_get_item_prop_pressed"]
+[connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]

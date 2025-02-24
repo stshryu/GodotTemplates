@@ -67,3 +67,12 @@ offset_right = 64.0
 offset_bottom = -48.0
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
+
+[node name="testing" type="Button" parent="."]
+offset_left = -56.0
+offset_top = -16.0
+offset_right = -12.0
+offset_bottom = 15.0
+text = "TEST"
+
+[connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]

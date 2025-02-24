@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://04g2ch8i33gx"]
+[gd_scene load_steps=5 format=3 uid="uid://04g2ch8i33gx"]
 
 [ext_resource type="Script" path="res://game/game_world.gd" id="1_ia2dv"]
 [ext_resource type="PackedScene" uid="uid://n5w50watdfmf" path="res://game/player.tscn" id="2_ydd3q"]
 [ext_resource type="PackedScene" uid="uid://ya6qbmhtt8jl" path="res://game/items/boots/item_ui_boots.tscn" id="4_qf0la"]
+[ext_resource type="PackedScene" uid="uid://dqq53ui25b8fh" path="res://game/items/helmet/item_ui_helmet.tscn" id="4_r57n8"]
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_ia2dv")
@@ -11,3 +12,6 @@ script = ExtResource("1_ia2dv")
 
 [node name="ItemUI_BOOTS" parent="." instance=ExtResource("4_qf0la")]
 position = Vector2(93.2855, 28.5873)
+
+[node name="ItemUI_HELMET" parent="." instance=ExtResource("4_r57n8")]
+position = Vector2(-30.8165, 103.868)

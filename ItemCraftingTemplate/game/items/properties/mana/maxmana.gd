@@ -2,7 +2,7 @@ class_name MaxMana
 extends ItemProperty
 
 func _init():
-	property_key = "maximum_mana"
+	property_key = StatMetadata.StatEnum.MAXIMUM_MANA
 	property_name = "Maximum Mana"
 	modifier_type = ItemMetadata.ModifierEnum.PREFIX
 	set_item_tier_bands()

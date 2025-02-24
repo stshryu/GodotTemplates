@@ -28,3 +28,9 @@ func reset_item():
 ### that can affect the item (and by extension the player).
 
 ### The mod_pool determines which ItemProperty classes can roll on the item.
+
+func get_property_by_mod_type(item_modifier: ItemMetadata.ModifierEnum) -> Array:
+	return item_properties[item_modifier]
+	
+func get_all_properties() -> Dictionary:
+	return item_properties

@@ -2,7 +2,7 @@ class_name ItemProperty
 extends Resource
 
 # Item Properties
-var property_key: String
+var property_key: StatMetadata.StatEnum
 var property_name: String
 var property_value
 
