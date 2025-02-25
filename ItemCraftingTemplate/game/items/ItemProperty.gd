@@ -36,7 +36,7 @@ func roll_property(item_level: int):
 	var key = values[rng.rand_weighted(weights)]
 	property_value = rng.randi_range(item_tier_bands[key][0], item_tier_bands[key][1])
 
-### Debugging the weights to ensure that the modifier types are matching our weights we defined.
+## Debugging the weights to ensure that the modifier types are matching our weights we defined.
 func _debug_weights(item_level: int, debug_limit: int):
 	var debug_bucket: Array = []
 	for i in range(0, debug_limit):

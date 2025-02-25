@@ -170,3 +170,7 @@ This project, unlike the vampire survivors project doesn't have any other entiti
 In other words, the player should orchestrate all of this. We have signals connected to some debugger buttons that basically triggers all of these things. When we equip an item, we add it to the `playerequipment` variable stored on the player, when the equip happens, we ssend a signal on the player that calculates all our equipped items, and pushes it into the `get_combined_stats()` method to get all of our combined stats from the `playerstats` variable.
 
 Once we get that data back, a flag should be set that ignores any other stat calculations until another event occurs that requires us to recalculate (e.g. equipping a new item, getting afflicted by a stat reducing curse etc...).
+
+### Additional Goodies
+
+We also added a `Logger.gd` base utility autoload class. Adds for a very informative and useful way to structure events while debugging (should consider adding this into every other templated class we have).

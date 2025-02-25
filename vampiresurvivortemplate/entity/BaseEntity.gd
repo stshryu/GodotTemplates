@@ -4,7 +4,7 @@ extends CharacterBody2D
 var entity_abilities: Dictionary = {}
 var enabled_abilities: Array[String] = []
 
-### Entity control related properties
+## Entity control related properties
 var can_act: bool = true
 var can_move: bool = true
 var is_moving: bool = false

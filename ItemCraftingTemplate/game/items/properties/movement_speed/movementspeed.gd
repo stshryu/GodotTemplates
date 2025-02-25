@@ -7,7 +7,7 @@ func _init():
 	modifier_type = ItemMetadata.ModifierEnum.SUFFIX
 	set_item_tier_bands()
 
-### Handles the tiering required to roll the property on an item
+## Handles the tiering required to roll the property on an item
 func set_item_tier_bands():
 	item_tier_bands = {
 		10: [50, 50, 50],
