@@ -6,27 +6,29 @@ extends CharacterBody2D
 @onready var playerequipment: BaseEquipment = BaseEquipment.new()
 
 var need_to_update_stats: bool = true
+var movement_speed: float
 
 func _ready():
-	pass
+	movement_speed = playerstats.movement_speed
 	
 func _physics_process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * playerstats.movement_speed
+	velocity = direction * movement_speed
 	move_and_slide()
 	
 	if need_to_update_stats:
+		movement_speed = playerstats.get_movement_speed(playerequipment.calculate_all_equipment_slots())
 		_update_stats()
 
 func _update_stats():
 	need_to_update_stats = false
-	playerstatlabel.text = Util.get_formatted_stats(playerstats)
+	var test =  Util.get_formatted_stats(playerstats, playerequipment)
+	playerstatlabel.text = test
 	
 func equip_item(slot: EquipmentMetadata.EquipmentSlot, item: BaseItem):
 	playerequipment.equip_item(slot, item)
+	need_to_update_stats = true
 		
 func _on_testing_pressed():
-	playerstats.parse_equipment_stats(playerequipment.calculate_all_equipment_slots())
 	need_to_update_stats = true
-	#playerequipment.calculate_equipment_slot(EquipmentMetadata.EquipmentSlot.BOOTS)
 	

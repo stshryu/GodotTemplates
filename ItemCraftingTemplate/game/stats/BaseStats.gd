@@ -12,6 +12,11 @@ func _init():
 	maximum_mana = 100.0
 	current_life = maximum_life
 
+func get_movement_speed(parsed_stats: Dictionary) -> float:
+	if parsed_stats.has(StatMetadata.StatEnum.MOVEMENT_SPEED):
+		return movement_speed + parsed_stats[StatMetadata.StatEnum.MOVEMENT_SPEED]
+	return movement_speed
+
 func update_movement_speed(amount: float):
 	movement_speed += amount
 	if movement_speed < 0: movement_speed = 0
@@ -32,14 +37,15 @@ func take_damage(amount: float):
 	current_life -= amount
 	if current_life < 0: current_life = 0
 
-func parse_equipment_stats(parsed_stats: Dictionary):
+func get_combined_stats(parsed_stats: Dictionary) -> Dictionary:
+	var response = get_custom_properties()
 	for key in parsed_stats:
-		if key == StatMetadata.StatEnum.MAXIMUM_LIFE:
-			update_maximum_health(parsed_stats[key])
-		elif key == StatMetadata.StatEnum.MOVEMENT_SPEED:
-			update_movement_speed(parsed_stats[key])
-		elif key == StatMetadata.StatEnum.MAXIMUM_MANA:
-			update_maximum_mana(parsed_stats[key])
+		var converted_key = StatMetadata.covert_enum_to_key(key)
+		if response.has(converted_key):
+			response[converted_key] += parsed_stats[key]
+		else:
+			response[converted_key] = parsed_stats[key]
+	return response
 
 func get_custom_properties():
 	var response = {}

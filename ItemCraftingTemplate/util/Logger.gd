@@ -11,7 +11,7 @@ func error(filename: String, error: String):
 
 func _get_color() -> String:
 	var colors = [
-		"red", "green", "yellow", "blue", "magenta", "pink", "purple", "cyan", "white", "orange"
+		"green", "yellow", "blue", "magenta", "pink", "purple", "cyan", "white", "orange"
 	]
 	var resp = colors[counter]
 	counter = 0 if counter + 1 == colors.size() else counter + 1
