@@ -1,9 +1,95 @@
-[gd_scene format=3 uid="uid://ct0lj83pfneuw"]
+[gd_scene load_steps=2 format=3 uid="uid://ct0lj83pfneuw"]
 
-[node name="LevelEditor" type="Control"]
+[ext_resource type="Script" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="LevelEditor" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hym8n")
+
+[node name="EditorScreen" type="Control" parent="LevelEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 210)
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="LevelEditor/EditorScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9436, 0.259828, 0.587282, 1)
+
+[node name="BottomControlPanel" type="Control" parent="LevelEditor"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="LevelEditor/BottomControlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15965, 0.64681, 0.597257, 1)
+
+[node name="RightControlPanel" type="Control" parent="LevelEditor"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LevelEditor/RightControlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="LevelEditor/RightControlPanel"]
+custom_minimum_size = Vector2(15, 15)
+anchors_preset = 0
+offset_left = 60.0
+offset_right = 75.0
+offset_bottom = 15.0
+
+[node name="ClosePanel" type="Button" parent="LevelEditor/RightControlPanel/Control"]
+layout_mode = 0
+offset_left = -15.0
+offset_right = -3.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 5
+text = "X"
+
+[node name="PanelTimeout" type="Timer" parent="LevelEditor/RightControlPanel"]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+
+[connection signal="pressed" from="LevelEditor/RightControlPanel/Control/ClosePanel" to="LevelEditor" method="_on_close_panel_pressed"]
+[connection signal="timeout" from="LevelEditor/RightControlPanel/PanelTimeout" to="LevelEditor" method="_on_panel_timeout_timeout"]

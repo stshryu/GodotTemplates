@@ -14,7 +14,6 @@ var scenes := {
 }
 
 func _ready():
-	current_scene.position = get_viewport_rect().size / 2.0
 	scene_finished_loading.connect(next_scene_loaded)
 	load_scene("main_menu")
 	
