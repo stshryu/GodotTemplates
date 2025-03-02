@@ -174,3 +174,6 @@ Once we get that data back, a flag should be set that ignores any other stat cal
 ### Additional Goodies
 
 We also added a `Logger.gd` base utility autoload class. Adds for a very informative and useful way to structure events while debugging (should consider adding this into every other templated class we have).
+
+## 5. Level Editor Template
+
