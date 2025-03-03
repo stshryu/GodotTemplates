@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct0lj83pfneuw"]
 
-[ext_resource type="Script" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
+[ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 

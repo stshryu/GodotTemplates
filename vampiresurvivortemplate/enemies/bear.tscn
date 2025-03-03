@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://b5ocuqkund6tp"]
 
-[ext_resource type="Script" path="res://enemies/bear/bear.gd" id="1_egpmg"]
+[ext_resource type="Script" uid="uid://ce38ohivrim38" path="res://enemies/bear/bear.gd" id="1_egpmg"]
 [ext_resource type="Texture2D" uid="uid://c1by25t6rpeet" path="res://art/BearSpriteSheet.png" id="2_pgten"]
-[ext_resource type="Script" path="res://enemies/bear_animation.gd" id="3_q6arb"]
+[ext_resource type="Script" uid="uid://q0aobkvdrntw" path="res://enemies/bear_animation.gd" id="3_q6arb"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://t6xo7vthyg5p" path="res://animation/bearanimationstate.tres" id="4_1eokr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo0lc"]
@@ -99,11 +99,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6adw"]
 _data = {
-"RESET": SubResource("Animation_yq4g0"),
-"move_down": SubResource("Animation_rjjxq"),
-"move_left": SubResource("Animation_qv640"),
-"move_right": SubResource("Animation_tqvbp"),
-"move_up": SubResource("Animation_o8aoy")
+&"RESET": SubResource("Animation_yq4g0"),
+&"move_down": SubResource("Animation_rjjxq"),
+&"move_left": SubResource("Animation_qv640"),
+&"move_right": SubResource("Animation_tqvbp"),
+&"move_up": SubResource("Animation_o8aoy")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xodhs"]

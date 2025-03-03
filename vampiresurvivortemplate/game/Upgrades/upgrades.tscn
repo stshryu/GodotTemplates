@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk6tf1huuek6h"]
 
-[ext_resource type="Script" path="res://game/Upgrades/upgrade.gd" id="1_be7d1"]
+[ext_resource type="Script" uid="uid://dlfyi6lce5i5g" path="res://game/Upgrades/upgrade.gd" id="1_be7d1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ql6y3"]
 

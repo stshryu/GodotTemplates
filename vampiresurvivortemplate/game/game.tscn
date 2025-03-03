@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bff3m3vh3yae1"]
 
 [ext_resource type="PackedScene" uid="uid://ddfcl58tgwsj7" path="res://Player/player.tscn" id="1_y6yuw"]
-[ext_resource type="Script" path="res://game/game.gd" id="1_yi5op"]
+[ext_resource type="Script" uid="uid://c0r55su7wapdy" path="res://game/game.gd" id="1_yi5op"]
 [ext_resource type="PackedScene" uid="uid://dbbj3q56ynr0u" path="res://game/items/expitem/expdrop.tscn" id="6_k1w3r"]
 
 [sub_resource type="Curve2D" id="Curve2D_5eoh7"]

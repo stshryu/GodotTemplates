@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageAmmoStrategy" load_steps=3 format=3 uid="uid://dlu8fhovv48ef"]
 
-[ext_resource type="Script" path="res://game/Ammo/AmmoStrategy/DamageAmmoStrategy.gd" id="1_mw647"]
+[ext_resource type="Script" uid="uid://b7bvfvhk4xdw4" path="res://game/Ammo/AmmoStrategy/DamageAmmoStrategy.gd" id="1_mw647"]
 [ext_resource type="Texture2D" uid="uid://bx2vrdsn4u0dy" path="res://art/ScrollFire.png" id="2_st1w7"]
 
 [resource]

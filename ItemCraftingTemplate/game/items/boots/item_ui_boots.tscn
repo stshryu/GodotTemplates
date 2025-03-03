@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ya6qbmhtt8jl"]
 
-[ext_resource type="Script" path="res://game/items/boots/item_ui_boots.gd" id="1_w5n7h"]
+[ext_resource type="Script" uid="uid://wrvng21i01te" path="res://game/items/boots/item_ui_boots.gd" id="1_w5n7h"]
 [ext_resource type="Texture2D" uid="uid://bf1neisdmfhvb" path="res://assets/Social/boot.png" id="2_45r72"]
 
 [node name="ItemUI_BOOTS" type="Node2D"]

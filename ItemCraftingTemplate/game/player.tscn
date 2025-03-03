@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://n5w50watdfmf"]
 
-[ext_resource type="Script" path="res://game/player.gd" id="1_efayn"]
+[ext_resource type="Script" uid="uid://gwllony5qirw" path="res://game/player.gd" id="1_efayn"]
 [ext_resource type="Texture2D" uid="uid://ncp14m421mh6" path="res://assets/Heroes/Knight/Idle/Idle-Sheet.png" id="2_2x0i3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_coeus"]

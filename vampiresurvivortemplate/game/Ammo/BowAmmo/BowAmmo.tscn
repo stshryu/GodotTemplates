@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmhp45y2a2bfr"]
 
-[ext_resource type="Script" path="res://game/Ammo/BowAmmo/BowAmmo.gd" id="1_pmksv"]
+[ext_resource type="Script" uid="uid://chu5hoe31k7xy" path="res://game/Ammo/BowAmmo/BowAmmo.gd" id="1_pmksv"]
 [ext_resource type="Texture2D" uid="uid://28kqojmmp13b" path="res://art/Arrow.png" id="2_gb5p6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y8xna"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ihum5xvgxhvf"]
 
-[ext_resource type="Script" path="res://abilities/teleport/teleport_ability.gd" id="1_2mh2i"]
+[ext_resource type="Script" uid="uid://d34hrwuffikma" path="res://abilities/teleport/teleport_ability.gd" id="1_2mh2i"]
 [ext_resource type="Texture2D" uid="uid://dxqpdtbshqtsr" path="res://art/emote21.png" id="2_0s4gj"]
 
 [node name="TeleportAbility" type="Node2D"]

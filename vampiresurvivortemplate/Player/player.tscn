@@ -1,10 +1,10 @@
 [gd_scene load_steps=34 format=3 uid="uid://ddfcl58tgwsj7"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_kdeeh"]
+[ext_resource type="Script" uid="uid://s5yq6hj0dnm2" path="res://Player/player.gd" id="1_kdeeh"]
 [ext_resource type="Texture2D" uid="uid://df8ecvtx16kxv" path="res://art/PlayerSpriteSheet.png" id="1_u1w1f"]
 [ext_resource type="PackedScene" uid="uid://chp57yp14kmge" path="res://game/weapons/bow/bow.tscn" id="3_xfu64"]
 [ext_resource type="PackedScene" uid="uid://jgtkvontip7r" path="res://game/weapons/sword/sword.tscn" id="4_lkv4n"]
-[ext_resource type="Script" path="res://Player/player_animation.gd" id="5_oiu4p"]
+[ext_resource type="Script" uid="uid://cbwryub0udun2" path="res://Player/player_animation.gd" id="5_oiu4p"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dss6ssjg4kmku" path="res://animation/playeranimation.tres" id="6_dcus4"]
 [ext_resource type="PackedScene" uid="uid://s6a3dwbauc0y" path="res://abilities/dash/dash_ability.tscn" id="7_30b1c"]
 [ext_resource type="PackedScene" uid="uid://ihum5xvgxhvf" path="res://abilities/teleport/teleport_ability.tscn" id="8_56ewm"]
@@ -187,16 +187,16 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6um0b"]
 _data = {
-"RESET": SubResource("Animation_bbymw"),
-"casting": SubResource("Animation_j63dj"),
-"idledown": SubResource("Animation_oe2v8"),
-"idleleft": SubResource("Animation_4mv3n"),
-"idleright": SubResource("Animation_f5ob5"),
-"idleup": SubResource("Animation_1u6y7"),
-"walkdown": SubResource("Animation_sxxon"),
-"walkleft": SubResource("Animation_5qynk"),
-"walkright": SubResource("Animation_ywx47"),
-"walkup": SubResource("Animation_v3a4g")
+&"RESET": SubResource("Animation_bbymw"),
+&"casting": SubResource("Animation_j63dj"),
+&"idledown": SubResource("Animation_oe2v8"),
+&"idleleft": SubResource("Animation_4mv3n"),
+&"idleright": SubResource("Animation_f5ob5"),
+&"idleup": SubResource("Animation_1u6y7"),
+&"walkdown": SubResource("Animation_sxxon"),
+&"walkleft": SubResource("Animation_5qynk"),
+&"walkright": SubResource("Animation_ywx47"),
+&"walkup": SubResource("Animation_v3a4g")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yl6so"]

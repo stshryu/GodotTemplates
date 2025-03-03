@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ability_scene_resource" load_steps=4 format=3 uid="uid://bnmrpfcvaiwor"]
 
 [ext_resource type="PackedScene" uid="uid://s6a3dwbauc0y" path="res://abilities/dash/dash_ability.tscn" id="1_7qe8k"]
-[ext_resource type="Script" path="res://abilities/ability_scene_resource.gd" id="1_of74m"]
+[ext_resource type="Script" uid="uid://b20nfmd4icg47" path="res://abilities/ability_scene_resource.gd" id="1_of74m"]
 [ext_resource type="Texture2D" uid="uid://d4db3xgn5vscc" path="res://art/steebWsmall.png" id="2_g785y"]
 
 [resource]

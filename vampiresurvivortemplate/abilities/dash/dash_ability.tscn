@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://s6a3dwbauc0y"]
 
-[ext_resource type="Script" path="res://abilities/dash/dash_ability.gd" id="1_4qo4l"]
+[ext_resource type="Script" uid="uid://n460no606abv" path="res://abilities/dash/dash_ability.gd" id="1_4qo4l"]
 [ext_resource type="Texture2D" uid="uid://dlk4tq7jp2268" path="res://art/OrbWater.png" id="2_17bxq"]
 
 [node name="DashAbility" type="Node2D"]

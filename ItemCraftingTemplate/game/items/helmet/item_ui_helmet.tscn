@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqq53ui25b8fh"]
 
-[ext_resource type="Script" path="res://game/items/helmet/item_ui_helmet.gd" id="1_qdqao"]
+[ext_resource type="Script" uid="uid://bgiatm23rjeq8" path="res://game/items/helmet/item_ui_helmet.gd" id="1_qdqao"]
 [ext_resource type="Texture2D" uid="uid://6wtuao676lvb" path="res://assets/Social/helmet.png" id="2_s0rso"]
 
 [node name="ItemUI_HELMET" type="Node2D"]

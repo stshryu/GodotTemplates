@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5ytrb3ll650t"]
 
-[ext_resource type="Script" path="res://abilities/ability_upgrade/ability_upgrade.gd" id="1_dpcmy"]
+[ext_resource type="Script" uid="uid://cisj54m6dk1wl" path="res://abilities/ability_upgrade/ability_upgrade.gd" id="1_dpcmy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rd4wa"]
 

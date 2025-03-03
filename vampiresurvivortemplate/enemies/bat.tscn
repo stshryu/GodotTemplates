@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://da0iio6tdcoc2"]
 
-[ext_resource type="Script" path="res://enemies/bat/bat.gd" id="1_dwqwl"]
+[ext_resource type="Script" uid="uid://cjo1m7pqjcmr2" path="res://enemies/bat/bat.gd" id="1_dwqwl"]
 [ext_resource type="Texture2D" uid="uid://cdbu8upq0m5ds" path="res://art/BatSpriteSheet.png" id="2_oe8fk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://civp0nprpf6pn" path="res://animation/batanimationstate.tres" id="3_3l2qd"]
-[ext_resource type="Script" path="res://enemies/bat/bat_animation.gd" id="3_furvv"]
+[ext_resource type="Script" uid="uid://cjashawxeylae" path="res://enemies/bat/bat_animation.gd" id="3_furvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo0lc"]
 size = Vector2(16, 16)
@@ -98,11 +98,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6fv2"]
 _data = {
-"RESET": SubResource("Animation_8rutg"),
-"move_down": SubResource("Animation_fl65d"),
-"move_left": SubResource("Animation_tb8rg"),
-"move_right": SubResource("Animation_pyxrl"),
-"move_up": SubResource("Animation_0htpd")
+&"RESET": SubResource("Animation_8rutg"),
+&"move_down": SubResource("Animation_fl65d"),
+&"move_left": SubResource("Animation_tb8rg"),
+&"move_right": SubResource("Animation_pyxrl"),
+&"move_up": SubResource("Animation_0htpd")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wj7s2"]
