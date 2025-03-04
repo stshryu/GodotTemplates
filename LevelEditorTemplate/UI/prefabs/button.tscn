@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpaqv8vmaby7d"]
+
+[ext_resource type="Script" uid="uid://b2rvrsjwv6bn5" path="res://UI/prefabs/button.gd" id="2_b8l62"]
+[ext_resource type="Texture2D" uid="uid://blayn3tbu12lq" path="res://assets/buttons.png" id="2_ug8s4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8l62"]
+atlas = ExtResource("2_ug8s4")
+region = Rect2(0, 0, 48, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4850j"]
+atlas = ExtResource("2_ug8s4")
+region = Rect2(96, 0, 48, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6whg"]
+atlas = ExtResource("2_ug8s4")
+region = Rect2(0, 51, 48, 51)
+
+[node name="TextureButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -415.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_b8l62")
+texture_pressed = SubResource("AtlasTexture_4850j")
+texture_hover = SubResource("AtlasTexture_b6whg")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_b8l62")
+
+[node name="ButtonLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_right = 50.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
