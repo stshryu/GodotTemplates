@@ -4,7 +4,7 @@ extends TextureButton
 @export var dimensions: Vector2
 @export var label_name: String = "placeholder"
 
-var button_state 
+var button_state
 
 func _ready():
 	self.custom_minimum_size = dimensions
@@ -15,3 +15,6 @@ func _on_button_down():
 
 func _on_button_up():
 	label.position.y -= 2
+
+func _on_pressed():
+	pass # Replace with function body.
