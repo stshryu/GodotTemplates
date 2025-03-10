@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct0lj83pfneuw"]
+[gd_scene load_steps=4 format=3 uid="uid://ct0lj83pfneuw"]
 
 [ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
+[ext_resource type="Texture2D" uid="uid://byh2v68i451em" path="res://assets/Modern_Office_48x48.png" id="2_dgxrl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m33o4"]
+atlas = ExtResource("2_dgxrl")
+region = Rect2(672, 630, 48, 66)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -18,18 +23,21 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(480, 210)
 layout_mode = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 480.0
+offset_bottom = 210.0
 
 [node name="ColorRect" type="ColorRect" parent="LevelEditor/EditorScreen"]
+custom_minimum_size = Vector2(480, 210)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -60.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9436, 0.259828, 0.587282, 1)
+color = Color(0.84128, 5.0056e-06, 0.524633, 1)
+
+[node name="EditorNode" type="Node2D" parent="LevelEditor/EditorScreen"]
+unique_name_in_owner = true
 
 [node name="BottomControlPanel" type="Control" parent="LevelEditor"]
 unique_name_in_owner = true
@@ -97,6 +105,9 @@ unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
 
-[connection signal="buttonpressed" from="LevelEditor" to="LevelEditor" method="_on_buttonpressed"]
+[node name="AtlasTextureDebugging" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_m33o4")
+
 [connection signal="pressed" from="LevelEditor/RightControlPanel/Control/VBoxRightContainer/ClosePanel" to="LevelEditor" method="_on_close_panel_pressed"]
 [connection signal="timeout" from="LevelEditor/RightControlPanel/PanelTimeout" to="LevelEditor" method="_on_panel_timeout_timeout"]

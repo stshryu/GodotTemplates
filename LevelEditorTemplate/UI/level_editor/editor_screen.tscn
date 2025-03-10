@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg5lqarlipwhk"]
+
+[ext_resource type="Script" uid="uid://6hf45ewjru82" path="res://UI/level_editor/editor_screen.gd" id="1_kv7fa"]
+
+[node name="EditorScreen" type="Control"]
+custom_minimum_size = Vector2(480, 210)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kv7fa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9436, 0.259828, 0.587282, 1)
