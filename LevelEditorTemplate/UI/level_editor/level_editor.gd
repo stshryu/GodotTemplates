@@ -6,6 +6,7 @@ extends Control
 @onready var right_panel_timer = %PanelTimeout
 @onready var right_button_container = %VBoxRightContainer
 @onready var editor_node = %EditorNode
+@onready var office_atlas_texture := OfficeAtlas.new()
 
 var viewport_dimensions := Vector2.ZERO
 var right_panel_timeout := false
@@ -14,27 +15,26 @@ var closing_right_panel := false
 var is_editing := false
 
 var prefab_button := preload("res://UI/prefabs/button.tscn")
-var atlas_texture := preload("res://assets/Modern_Office_48x48.png")
-var button_texture_atlas_key: Dictionary[TextureButton, Array] = {}
+var button_texture_atlas_key: Dictionary[TextureButton, String] = {}
 var currently_active_placement: AtlasTexture
 var preview: Sprite2D
 
-func add_button(button_name: String, button_dimensions: Vector2, button_atlas_coords: Vector2, button_atlas_dimension: Vector2):
+func add_button(button_name: String, button_dimensions: Vector2):
 	right_button_container.add_child(HSeparator.new())
 	var new_button = prefab_button.instantiate()
 	new_button.label_name = button_name
 	new_button.dimensions = button_dimensions
 	right_button_container.add_child(new_button)
 	var new_child = right_button_container.get_children().back()
-	button_texture_atlas_key[new_child] = [button_atlas_coords, button_atlas_dimension]
+	button_texture_atlas_key[new_child] = button_name
 	new_button.pressed.connect(_on_right_panel_button_pressed.bind(new_button))
 	return right_button_container.get_children().back()
 
 func _ready():
 	viewport_dimensions = get_viewport_rect().size
 	
-	add_button("Printer", Vector2(60.0,20.0), Vector2(393.0, 990.0), Vector2(75.0, 60.0))
-	add_button("Computer", Vector2(60.0,20.0), Vector2(672.0, 630.0), Vector2(48.0, 66.0))
+	for key in office_atlas_texture.atlas_properties.keys():
+		add_button(key, Vector2(60.0,20.0))
 	
 func _physics_process(_delta):
 	if not right_panel_timeout:
@@ -54,11 +54,7 @@ func _physics_process(_delta):
 
 func _on_right_panel_button_pressed(pressed_button):
 	is_editing = true
-	currently_active_placement = AtlasTexture.new()
-	currently_active_placement.set_atlas(atlas_texture)
-	currently_active_placement.region = Rect2(
-		button_texture_atlas_key[pressed_button][0], button_texture_atlas_key[pressed_button][1]
-	)
+	currently_active_placement = office_atlas_texture.get_texture(button_texture_atlas_key[pressed_button])
 	preview = Sprite2D.new()
 	preview.texture = currently_active_placement
 	preview.modulate.a = 0.5
