@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct0lj83pfneuw"]
+[gd_scene load_steps=2 format=3 uid="uid://ct0lj83pfneuw"]
 
 [ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
-[ext_resource type="Texture2D" uid="uid://byh2v68i451em" path="res://assets/Modern_Office_48x48.png" id="2_dgxrl"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m33o4"]
-atlas = ExtResource("2_dgxrl")
-region = Rect2(672, 630, 48, 66)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -60,6 +55,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15965, 0.64681, 0.597257, 1)
 
+[node name="Control" type="Control" parent="LevelEditor/BottomControlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelEditor/BottomControlPanel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="RightControlPanel" type="Control" parent="LevelEditor"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
@@ -104,10 +115,6 @@ text = "X"
 unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
-
-[node name="AtlasTextureDebugging" type="Sprite2D" parent="."]
-visible = false
-texture = SubResource("AtlasTexture_m33o4")
 
 [connection signal="pressed" from="LevelEditor/RightControlPanel/Control/VBoxRightContainer/ClosePanel" to="LevelEditor" method="_on_close_panel_pressed"]
 [connection signal="timeout" from="LevelEditor/RightControlPanel/PanelTimeout" to="LevelEditor" method="_on_panel_timeout_timeout"]

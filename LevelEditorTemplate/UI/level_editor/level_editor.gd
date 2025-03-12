@@ -47,6 +47,7 @@ func _physics_process(_delta):
 	if is_editing:
 		var mouse_pos := get_local_mouse_position()
 		preview.position = mouse_pos
+		preview.visible = true
 		
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			preview.modulate.a = 1.0
@@ -58,6 +59,7 @@ func _on_right_panel_button_pressed(pressed_button):
 	preview = Sprite2D.new()
 	preview.texture = currently_active_placement
 	preview.modulate.a = 0.5
+	preview.visible = false
 	editor_node.call_deferred("add_child", preview)
 	
 func display_right_panel():
