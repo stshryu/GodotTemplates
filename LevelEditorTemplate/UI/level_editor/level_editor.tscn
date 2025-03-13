@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct0lj83pfneuw"]
+[gd_scene load_steps=3 format=3 uid="uid://ct0lj83pfneuw"]
 
 [ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
+[ext_resource type="PackedScene" uid="uid://cpaqv8vmaby7d" path="res://UI/prefabs/button.tscn" id="2_dgxrl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -63,13 +64,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelEditor/BottomControlPanel/Control"]
+[node name="BottomControlContainer" type="HBoxContainer" parent="LevelEditor/BottomControlPanel/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="SaveScene" parent="LevelEditor/BottomControlPanel/Control/BottomControlContainer" instance=ExtResource("2_dgxrl")]
+layout_mode = 2
+ignore_texture_size = false
+dimensions = Vector2(60, 20)
+label_name = "Save Store"
+
+[node name="ButtonLabel" parent="LevelEditor/BottomControlPanel/Control/BottomControlContainer/SaveScene" index="0"]
+theme_override_font_sizes/font_size = 7
+
+[node name="HSeparator" type="HSeparator" parent="LevelEditor/BottomControlPanel/Control/BottomControlContainer"]
+layout_mode = 2
+
+[node name="LoadScene" parent="LevelEditor/BottomControlPanel/Control/BottomControlContainer" instance=ExtResource("2_dgxrl")]
+layout_mode = 2
+dimensions = Vector2(60, 20)
+label_name = "Load Store"
+
+[node name="ButtonLabel" parent="LevelEditor/BottomControlPanel/Control/BottomControlContainer/LoadScene" index="0"]
+theme_override_font_sizes/font_size = 7
 
 [node name="RightControlPanel" type="Control" parent="LevelEditor"]
 unique_name_in_owner = true
@@ -116,5 +138,10 @@ unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
 
+[connection signal="pressed" from="LevelEditor/BottomControlPanel/Control/BottomControlContainer/SaveScene" to="LevelEditor" method="_on_save_scene_pressed"]
+[connection signal="pressed" from="LevelEditor/BottomControlPanel/Control/BottomControlContainer/LoadScene" to="LevelEditor" method="_on_load_scene_pressed"]
 [connection signal="pressed" from="LevelEditor/RightControlPanel/Control/VBoxRightContainer/ClosePanel" to="LevelEditor" method="_on_close_panel_pressed"]
 [connection signal="timeout" from="LevelEditor/RightControlPanel/PanelTimeout" to="LevelEditor" method="_on_panel_timeout_timeout"]
+
+[editable path="LevelEditor/BottomControlPanel/Control/BottomControlContainer/SaveScene"]
+[editable path="LevelEditor/BottomControlPanel/Control/BottomControlContainer/LoadScene"]

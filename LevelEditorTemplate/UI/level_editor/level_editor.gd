@@ -62,6 +62,9 @@ func _on_right_panel_button_pressed(pressed_button):
 	preview.visible = false
 	editor_node.call_deferred("add_child", preview)
 	
+func _on_bottom_panel_button_pressed(pressed_button):
+	Logger.infomsg("LevelEditor", "Hi")
+	
 func display_right_panel():
 	var x_mouse_pos = get_viewport().get_mouse_position()[0]
 	if x_mouse_pos > (viewport_dimensions[0]-20) and not right_control_panel.visible:
@@ -86,3 +89,9 @@ func _on_close_panel_pressed():
 
 func _on_panel_timeout_timeout():
 	right_panel_timeout = false
+
+func _on_save_scene_pressed():
+	Logger.infomsg("Level Editor", "Saving Scene")
+
+func _on_load_scene_pressed():
+	Logger.infomsg("Level Editor", "Loading Scene")
