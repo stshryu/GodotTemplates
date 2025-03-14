@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="WaveFunctionCollapseTemplate"
+run/main_scene="uid://cdvd7bbrv6e4y"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Logger="*res://utils/Logger.gd"

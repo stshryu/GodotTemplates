@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyfnbk00idwh2"]
+
+[ext_resource type="Script" uid="uid://c4d036kmq437d" path="res://menu.gd" id="1_lti8b"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_lti8b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -38.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Generate"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
