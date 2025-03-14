@@ -28,6 +28,9 @@ Like Stardew Valley's building placement editor.
 
 Also added a SceneManager, that handles loading, deleting, pre-loading and threading the loads of multiple scenes. Probably applicable to all the other templates as a base.
 
-## 6. Wave Function Collapse Template
+## 6. [Wave Function Collapse Template](WaveFunctionCollapseTemplate/README.md)
+
+The project also happens to have an up to date Logger class (refer to it vs other projects for a better approach to the function). I'll eventually get around to refactoring all the utility singletons.
 
 Procedural generation via Wave Function Collapse.
+
