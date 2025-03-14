@@ -2,13 +2,13 @@ extends Node
 
 var counter = 0
 
-func infomsg(message: String, filename := ""):
+func infomsg(message: Variant, filename := ""):
 	var colorstr = "[color=%s]" % _get_color()
 	var filestr = "File: %s\n" % filename if filename else ""
 	var msgstr = "Message: %s" % message
 	print_rich("%s%s%s" % [colorstr, filestr, msgstr])
 	
-func errormsg(error_msg: String, filename := ""):
+func errormsg(error_msg: Variant, filename := ""):
 	var filestr = "File: %s\n" % filename if filename else ""
 	var msgstr = "Error: %s" % error_msg
 	push_error("%s%s" % [filestr, msgstr])
