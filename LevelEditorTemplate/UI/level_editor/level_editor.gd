@@ -7,6 +7,7 @@ extends Control
 @onready var right_button_container = %VBoxRightContainer
 @onready var editor_node = %EditorNode
 @onready var office_atlas_texture := OfficeAtlas.new()
+@onready var test_layer = %TestLayer
 
 var viewport_dimensions := Vector2.ZERO
 var right_panel_timeout := false
@@ -18,6 +19,7 @@ var prefab_button := preload("res://UI/prefabs/button.tscn")
 var button_texture_atlas_key: Dictionary[TextureButton, String] = {}
 var currently_active_placement: AtlasTexture
 var preview: Sprite2D
+var base_map_size := Vector2(100.0, 100.0)
 
 func add_button(button_name: String, button_dimensions: Vector2):
 	right_button_container.add_child(HSeparator.new())
@@ -51,7 +53,9 @@ func _physics_process(_delta):
 		
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			preview.modulate.a = 1.0
-			is_editing = false 
+			is_editing = false
+			var tilemap_position = test_layer.local_to_map(preview.position)
+			Logger.infomsg("", "Local tilemap position: %s" % tilemap_position)
 
 func _on_right_panel_button_pressed(pressed_button):
 	is_editing = true
@@ -61,9 +65,6 @@ func _on_right_panel_button_pressed(pressed_button):
 	preview.modulate.a = 0.5
 	preview.visible = false
 	editor_node.call_deferred("add_child", preview)
-	
-func _on_bottom_panel_button_pressed(pressed_button):
-	Logger.infomsg("LevelEditor", "Hi")
 	
 func display_right_panel():
 	var x_mouse_pos = get_viewport().get_mouse_position()[0]

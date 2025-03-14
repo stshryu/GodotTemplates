@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct0lj83pfneuw"]
+[gd_scene load_steps=4 format=3 uid="uid://ct0lj83pfneuw"]
 
 [ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
 [ext_resource type="PackedScene" uid="uid://cpaqv8vmaby7d" path="res://UI/prefabs/button.tscn" id="2_dgxrl"]
+
+[sub_resource type="TileSet" id="TileSet_dgxrl"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -34,6 +36,10 @@ color = Color(0.84128, 5.0056e-06, 0.524633, 1)
 
 [node name="EditorNode" type="Node2D" parent="LevelEditor/EditorScreen"]
 unique_name_in_owner = true
+
+[node name="TestLayer" type="TileMapLayer" parent="LevelEditor/EditorScreen/EditorNode"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_dgxrl")
 
 [node name="BottomControlPanel" type="Control" parent="LevelEditor"]
 unique_name_in_owner = true
