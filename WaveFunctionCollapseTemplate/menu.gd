@@ -12,7 +12,6 @@ func _ready():
 func _on_generate_pressed():
 	var test = wfc.load_ruleset()
 	generate_scene.emit(test)
-	Logger.infomsg("Generating wave function")
 
 func _on_ruleset_pressed():
 	Logger.infomsg("Rulset loaded")
