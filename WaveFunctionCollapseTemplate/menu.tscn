@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtk1s587ov6s4" path="res://menu.gd" id="1_lti8b"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="MenuCanvas" type="CanvasLayer"]
 
 [node name="Menu" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 50)

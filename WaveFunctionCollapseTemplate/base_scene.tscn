@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdvd7bbrv6e4y"]
+[gd_scene load_steps=4 format=3 uid="uid://cdvd7bbrv6e4y"]
 
+[ext_resource type="Script" uid="uid://bkewimf4c8iey" path="res://base_scene.gd" id="1_2puwf"]
 [ext_resource type="PackedScene" uid="uid://3r85og8x6bpw" path="res://menu.tscn" id="1_57xsf"]
 [ext_resource type="TileSet" uid="uid://brd0medatjai0" path="res://ruleset.tres" id="2_qcxwf"]
 
 [node name="BaseScene" type="Node2D"]
+script = ExtResource("1_2puwf")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("1_57xsf")]
+[node name="MenuCanvas" parent="." instance=ExtResource("1_57xsf")]
 
 [node name="GeneratedScene" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="GeneratedScene"]
+[node name="SceneGenControl" type="Control" parent="GeneratedScene"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 3
 anchors_preset = 5
@@ -21,7 +24,7 @@ offset_right = 200.0
 offset_bottom = 210.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="GeneratedScene/Control"]
+[node name="ColorRect" type="ColorRect" parent="GeneratedScene/SceneGenControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
