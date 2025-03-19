@@ -1,5 +1,5 @@
 class_name BaseScene
-extends Resource
+extends Node2D
 
 """
 Scenes need a coordinate plane that denotes the boundaries of the scene, and the contents within.
@@ -8,7 +8,7 @@ should hold a SceneContent resource that has the position, and the related atlas
 that holds the actual texture, size, and scene (if the atlas_property has a scene).
 """
 var scene_map: Dictionary = {
-	"base_map": Texture2D,
+	"base_map": TileMapLayer,
 	"size": Vector2.ZERO,
 	"contents": [SceneContent],
 }

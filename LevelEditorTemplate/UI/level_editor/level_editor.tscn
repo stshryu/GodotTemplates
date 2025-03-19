@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6q744ugg7qre" path="res://UI/level_editor/level_editor.gd" id="1_hym8n"]
 [ext_resource type="PackedScene" uid="uid://cpaqv8vmaby7d" path="res://UI/prefabs/button.tscn" id="2_dgxrl"]
-
-[sub_resource type="TileSet" id="TileSet_dgxrl"]
+[ext_resource type="PackedScene" uid="uid://c32aifh0hlntq" path="res://scene/basic_store_scene/basic_store.tscn" id="2_m33o4"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -37,9 +36,7 @@ color = Color(0.84128, 5.0056e-06, 0.524633, 1)
 [node name="EditorNode" type="Node2D" parent="LevelEditor/EditorScreen"]
 unique_name_in_owner = true
 
-[node name="TestLayer" type="TileMapLayer" parent="LevelEditor/EditorScreen/EditorNode"]
-unique_name_in_owner = true
-tile_set = SubResource("TileSet_dgxrl")
+[node name="basic_store" parent="LevelEditor/EditorScreen/EditorNode" instance=ExtResource("2_m33o4")]
 
 [node name="BottomControlPanel" type="Control" parent="LevelEditor"]
 unique_name_in_owner = true
