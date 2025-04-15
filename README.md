@@ -35,3 +35,8 @@ The project also happens to have an up to date Logger class (refer to it vs othe
 Procedural generation via Wave Function Collapse.
 
 ## 7. [Advanced Custom Resources Template](AdvancedCustomResourcesTemplate/README.md)
+
+This project will take a look at nested custom resoruces and how they can be used to simplify interconnected scenes.
+
+The main goal is to create a boilerplate template that can be plugged into any sort of project that uses a base scene that different child scenes can affect and manipulate, think like FTL/Into the Breach where different weapons/subsystems can be added to the base scene (the ship) which can then affect the board (enemy ship) by using their ability which does different things (laser vs. rocket for example).
+
