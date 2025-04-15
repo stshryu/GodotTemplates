@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bes3uqygsa7k3"]
+
+[ext_resource type="Script" uid="uid://dg8q04e1lygst" path="res://base_scene/base_game_scene.gd" id="1_2luxq"]
+[ext_resource type="Texture2D" uid="uid://d2c715jjw0xi5" path="res://assets/testspritesheet.png" id="2_auctp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1jym"]
+texture = ExtResource("2_auctp")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bkuld"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_p1jym")
+
+[node name="BaseGameScene" type="Node2D"]
+script = ExtResource("1_2luxq")
+
+[node name="RandomScene" type="Node2D" parent="."]
+
+[node name="TileMapLayerTest" type="TileMapLayer" parent="RandomScene"]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_bkuld")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 1)
+zoom = Vector2(4, 4)

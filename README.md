@@ -34,3 +34,4 @@ The project also happens to have an up to date Logger class (refer to it vs othe
 
 Procedural generation via Wave Function Collapse.
 
+## 7. [Advanced Custom Resources Template](AdvancedCustomResourcesTemplate/README.md)
