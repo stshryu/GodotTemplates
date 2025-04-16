@@ -1,3 +1,4 @@
+class_name BaseSpecialAbility
 extends Resource
 
 """
@@ -10,32 +11,47 @@ an in-game scene, maybe an ability bar scene as well.
 abilities to ensure that it is as modular as possible.)
 """
 
-@export var store_scene: PackedScene
-@export var game_scene: PackedScene
+@export var store_scene_resource: PackedScene
+@export var game_scene_resource: PackedScene
 
 @export var name: String
 @export var is_consumable: bool
 @export var description: String
 
-"""
-Load the base scene into the game.
-"""
-func load_base_scene(parent_node: Variant):
-	var new_scene := game_scene.instantiate()
-	## We can do some initial seeding here if needed
-	## new_scene.set_some_variable = something
-	parent_node.add_child(new_scene)
+var game_scene: Node
+var store_scene: Node
 
 """
-Load the store scene into the game.
+Game scene methods
 """
-func load_store_scene(parent_node: Variant):
-	var new_scene := store_scene.instantiate()
-	parent_node.add_child(new_scene)
-
-"""
-Empty contract to allow abilities to implement their own sub use-ability method.
-"""
-func use_ability(params: Dictionary):
-	pass
+func create_base_scene():
+	var new_scene := game_scene_resource.instantiate()
+	game_scene = new_scene
 	
+func add_base_scene(parent_node: Node):
+	if game_scene:
+		parent_node.add_child(game_scene)
+	else:
+		print("Game scene not initialized")
+	
+"""
+Store scene methods
+"""
+func load_store_scene():
+	var new_scene := store_scene_resource.instantiate()
+	store_scene = new_scene
+
+func add_store_scene(parent_node: Node):
+	if store_scene:
+		parent_node.add_child(store_scene)
+	else:
+		print("Store scene not initialized")
+
+"""
+Executes the base scene use_ability() method alongside additional parameters if supplied.
+"""
+func use_ability(params := {}) -> void:
+	if game_scene.has_method("use_ability"):
+		game_scene.use_ability(params)
+	else:
+		print("No method found, exiting")

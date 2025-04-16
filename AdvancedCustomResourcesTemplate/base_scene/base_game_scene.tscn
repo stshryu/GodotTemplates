@@ -19,6 +19,7 @@ sources/0 = SubResource("TileSetAtlasSource_p1jym")
 script = ExtResource("1_2luxq")
 
 [node name="RandomScene" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="TileMapLayerTest" type="TileMapLayer" parent="RandomScene"]
 unique_name_in_owner = true
