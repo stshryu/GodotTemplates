@@ -35,7 +35,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("use_straight_line"):
 			straight_line_ability.add_base_scene(randomscene)
 			straight_line_ability.connect_active_signal(_set_active_scene)
-			_use_ability(straight_line_ability.use_ability, {})
+			_use_ability(straight_line_ability.use_ability, {"tilemaplayer": tilemaplayer})
 	
 func interact_with_tilemap(click_loc: Vector2i):
 	tilemaplayer.set_cell(click_loc, 0, atlas_coords["RED"], 0)
