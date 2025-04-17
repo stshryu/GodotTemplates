@@ -14,8 +14,8 @@ We want to have an ability resource that basically holds a variety of scenes. By
 
 The project is going to have 4 basic components:
 
-1. `assets`
-2.`base_scene` - Holds the scene data for our base game
+1. `assets` 
+2. `base_scene` - Holds the scene data for our base game
 3. `special_abilities` - Holds all the ability data (including our base ability class)
 4. `store_scene` - Holds the scene data for a store screen, which is separate from our base scene.
 
