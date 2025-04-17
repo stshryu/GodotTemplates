@@ -28,6 +28,13 @@ func create_base_scene():
 	var new_scene := game_scene_resource.instantiate()
 	game_scene = new_scene
 	
+## Allows us to pass priority between parent and sub-scenes
+func connect_active_signal(parent_callable: Callable):
+	if game_scene:
+		game_scene._connect_parent_signal(parent_callable)
+	else:
+		print("Game scene not initialized")
+	
 func add_base_scene(parent_node: Node):
 	if game_scene:
 		parent_node.add_child(game_scene)

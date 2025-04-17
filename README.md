@@ -40,3 +40,4 @@ This project will take a look at nested custom resoruces and how they can be use
 
 The main goal is to create a boilerplate template that can be plugged into any sort of project that uses a base scene that different child scenes can affect and manipulate, think like FTL/Into the Breach where different weapons/subsystems can be added to the base scene (the ship) which can then affect the board (enemy ship) by using their ability which does different things (laser vs. rocket for example).
 
+We are also going to explore a little about passing priority in-between scenes and the contract that needs to be formed between the various scenes/subscenes to make that happen.
