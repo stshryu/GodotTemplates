@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var arrow_texture := %ArrowTexture
+@onready var movement_cd := %MovementCD
 
 var placement_coord: Vector2i
 var direction_keys := [Vector2i(-1,0),Vector2i(0,-1),Vector2i(1,0),Vector2i(0,1)]
@@ -38,7 +39,7 @@ func _process(_delta):
 		print("Error: signal was never connected back to parent")
 
 func place_ability():
-	var tilemapcoord
+	movement_cd.start()
 
 func use_ability(params: Dictionary):
 	## if the parameters contains the tilemaplayer, lets set a reference to it
@@ -58,9 +59,13 @@ func _relinquish_priority():
 	placing_ability = false
 	placed_on_board.emit()
 	
-func _rotate(direction: int): ## 0 = 90, 1 = -90 degrees
-	match direction:
+func _rotate(rot_dir: int): ## 0 = 90, 1 = -90 degrees
+	match rot_dir:
 		0:
-			direction = direction + 1 if direction < direction_keys.size() else 0
+			direction = direction + 1 if direction < direction_keys.size() - 1 else 0
 		1:
-			direction = direction - 1 if direction >= 0 else direction_keys.size() - 1
+			direction = direction - 1 if direction > 0 else direction_keys.size() - 1
+
+func _on_movement_cd_timeout():
+	var curr_pos := preview.position
+	preview.position = Vector2i(curr_pos.x, curr_pos.y) + Vector2i(8, 8) * direction_keys[direction]
