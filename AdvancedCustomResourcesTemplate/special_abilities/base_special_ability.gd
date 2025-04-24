@@ -35,6 +35,12 @@ func connect_active_signal(parent_callable: Callable):
 	else:
 		print("Game scene not initialized")
 	
+func connect_interact_with_tilemap(parent_callable: Callable):
+	if game_scene:
+		game_scene._connect_interact_tilemap_signal(parent_callable)
+	else:
+		print("Game scene not initialized")
+		
 func add_base_scene(parent_node: Node):
 	if game_scene:
 		parent_node.add_child(game_scene)

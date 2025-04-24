@@ -12,6 +12,7 @@ var is_placed: bool = false
 var tilemaplayer: TileMapLayer
 
 signal placed_on_board
+signal interact_with_board
 
 func _ready():
 	preview = arrow_texture
@@ -39,6 +40,7 @@ func _process(_delta):
 		print("Error: signal was never connected back to parent")
 
 func place_ability():
+	_map_tilemap_coord_and_interact()
 	movement_cd.start()
 
 func use_ability(params: Dictionary):
@@ -50,6 +52,9 @@ func use_ability(params: Dictionary):
 func _connect_parent_signal(parent_callable: Callable):
 	placed_on_board.connect(parent_callable)
 
+func _connect_interact_tilemap_signal(parent_callable: Callable):
+	interact_with_board.connect(parent_callable)
+	
 func _set_active_scene():
 	placing_ability = true
 	print("straight line active")
@@ -69,3 +74,8 @@ func _rotate(rot_dir: int): ## 0 = 90, 1 = -90 degrees
 func _on_movement_cd_timeout():
 	var curr_pos := preview.position
 	preview.position = Vector2i(curr_pos.x, curr_pos.y) + Vector2i(8, 8) * direction_keys[direction]
+	_map_tilemap_coord_and_interact()
+
+func _map_tilemap_coord_and_interact():
+	var tilemap_coord := tilemaplayer.local_to_map(preview.position)
+	interact_with_board.emit(tilemap_coord)
