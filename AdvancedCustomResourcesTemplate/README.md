@@ -2,9 +2,14 @@
 
 ## TODO:
 
-Implement the sub-scene's special ability (arrow that can rotate and move forward in the selected direction, turning green tiles into red tiles until it runs out of bounds).
+With everything implemented we need to see if this is actually scalable. I think there was a lot of code that is tightly coupled between the base game scene and the sub-ability scene.
 
-Additionally, we need to handle queueing the resource free once it's completed its action (any persistent actions should technically be left on the parent board state, allowing us to delete and recreate the sub-scene at will).
+We might need to separate the concerns a little better, and maybe have an intermediary resource/class that sits between the game scene and the sub ability scenes.
+
+1. We know each sub ability will need to in some way interact with the game board state (having a separate custom resource for the tilemaplayer/dimensions/etc... will help greatly on that front).
+2. The game node itself needs to be able to spawn the sub abilities on a whim, so the `base_special_abilities` class is going to need to do two way interfacing with our current setup. It might be better to instead have a `base_game_scene` class that abstracts the main game away (maybe looping back to point 1).
+
+TL;DR lots of experimenting left to see what works.
 
 ## Basic Concept
 
