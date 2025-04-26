@@ -24,7 +24,6 @@ var atlas_coords := {
 var can_act: bool = true
 
 func _ready():
-	straight_line_ability.create_base_scene()
 	generate_tilemap()
 
 func _process(_delta):		
@@ -33,6 +32,7 @@ func _process(_delta):
 			var tilemap_coord = tilemaplayer.local_to_map(get_local_mouse_position())
 			interact_with_tilemap(tilemap_coord)
 		if Input.is_action_just_pressed("use_straight_line"):
+			straight_line_ability.create_base_scene()
 			straight_line_ability.add_base_scene(randomscene)
 			straight_line_ability.connect_active_signal(_set_active_scene)
 			straight_line_ability.connect_interact_with_tilemap(interact_with_tilemap)

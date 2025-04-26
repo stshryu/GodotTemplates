@@ -9,7 +9,12 @@ var direction := 0
 var preview: Sprite2D
 var placing_ability: bool = false
 var is_placed: bool = false
+
+## Keep in mind we might want to abstract out the tilemaplayer and dimensions into their own scene/custom resource
+## which would allow us to pass a reference to a singular resource instead of defining these variables across
+## multiple classes.
 var tilemaplayer: TileMapLayer
+var tilemap_dimensions := Vector2i(5,5)
 
 signal placed_on_board
 signal interact_with_board
@@ -78,4 +83,8 @@ func _on_movement_cd_timeout():
 
 func _map_tilemap_coord_and_interact():
 	var tilemap_coord := tilemaplayer.local_to_map(preview.position)
-	interact_with_board.emit(tilemap_coord)
+	if tilemap_coord.x in range(0, tilemap_dimensions.x) and tilemap_coord.y in range(0, tilemap_dimensions.y):
+		interact_with_board.emit(tilemap_coord)
+	else:
+		## Delete self once we reach the end of the board
+		self.queue_free()
