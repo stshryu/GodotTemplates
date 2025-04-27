@@ -62,7 +62,6 @@ func _connect_interact_tilemap_signal(parent_callable: Callable):
 	
 func _set_active_scene():
 	placing_ability = true
-	print("straight line active")
 	
 func _relinquish_priority():
 	preview.modulate.a = 1.0
@@ -86,5 +85,4 @@ func _map_tilemap_coord_and_interact():
 	if tilemap_coord.x in range(0, tilemap_dimensions.x) and tilemap_coord.y in range(0, tilemap_dimensions.y):
 		interact_with_board.emit(tilemap_coord)
 	else:
-		## Delete self once we reach the end of the board
 		self.queue_free()
