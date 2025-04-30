@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jfqi4b5ndmy"]
+
+[ext_resource type="Script" uid="uid://c5j0ajfno2hcc" path="res://base_scene.gd" id="1_57xsf"]
+[ext_resource type="Script" uid="uid://04bu2ty06hq7" path="res://advanced_exports/tool_exports.gd" id="2_qcxwf"]
+
+[node name="BaseScene" type="Node2D"]
+script = ExtResource("1_57xsf")
+
+[node name="SubNode" type="Node2D" parent="."]
+script = ExtResource("2_qcxwf")
+testName = ""
+testColor = null
+c0g0sg0randomName = ""
+c0g0sg0testRange = -5.2
+c0g0nonSubgroupName = ""

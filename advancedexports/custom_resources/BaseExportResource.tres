@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseExports" load_steps=2 format=3 uid="uid://d2e6yfalgicrq"]
+
+[ext_resource type="Script" uid="uid://be0q5iikb76sg" path="res://advanced_exports/base_exports.gd" id="1_5j3cp"]
+
+[resource]
+script = ExtResource("1_5j3cp")
+string_name = ""
+string_desc = ""
+int_range = 0
+float_range = -10.0
+elements = 7
+enumtest = 0
+enumtest2 = Array[int]([])
+metadata/_custom_type_script = "uid://be0q5iikb76sg"

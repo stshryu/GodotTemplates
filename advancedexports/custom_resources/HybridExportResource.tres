@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HybridExports" load_steps=2 format=3 uid="uid://bxpug8wepjc8x"]
+
+[ext_resource type="Script" uid="uid://5gyc4cne7ms2" path="res://advanced_exports/hybrid_exports.gd" id="1_8h6iy"]
+
+[resource]
+script = ExtResource("1_8h6iy")
+flagName = false
+metadata/_custom_type_script = "uid://5gyc4cne7ms2"
