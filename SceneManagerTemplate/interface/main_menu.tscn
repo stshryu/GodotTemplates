@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cnsypqe0x8e7f"]
+
+[ext_resource type="Script" uid="uid://datv7cvxlsxrs" path="res://interface/main_menu.gd" id="1_g8ogf"]
+
+[node name="MainMenu" type="Control" unique_id=1583883255]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_g8ogf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1091766229]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1745202637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1708455913]
+layout_mode = 2
+text = "Hi Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=687826715]
+layout_mode = 2
+text = "Go to the other scene"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://mmnspv6lrqxh"]
+
+[ext_resource type="Script" uid="uid://bisuicia3irh4" path="res://scene_manager/scene_manager.gd" id="1_6w36t"]
+
+[node name="SceneManager" type="Node2D" unique_id=1255976250]
+script = ExtResource("1_6w36t")
+
+[node name="CurrentScene" type="Node2D" parent="." unique_id=2140119574]
+unique_name_in_owner = true
