@@ -4,6 +4,8 @@ This project is a baseline implementation of a scene manager that will handle ev
 
 ## Project Layout
 
+![Scene Manager Layout](../images/scene_manager_node_layout.png)
+
 `scene_manager/` - This folder should contain the root scene, and the corresponding gd script file that houses the logic for our scene logic.
 
 `interface/` - Contains two dummy scenes that we will use to demonstrate loading and unloading scenes (`main_menu` and `other_scene`)
