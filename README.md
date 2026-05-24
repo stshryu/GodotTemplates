@@ -49,3 +49,7 @@ This project is just a basic example project on how to handle exports. Exports a
 ## 9. [Scene Manager Template](SceneManagerTemplate/README.md)
 
 This project is a basic project that defines a basic scene manager singleton that can be accessed by any child scenes to easily load, unload, and transition scenes.
+
+## 10. [Tween Template](TweenTemplate/README.md)
+
+This project covers tweens, and their uses in Godot. Many of the work was taken from [cristophe's interactive tween guide](https://qaqelol.itch.io/tweens)
