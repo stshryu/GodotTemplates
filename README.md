@@ -53,3 +53,7 @@ This project is a basic project that defines a basic scene manager singleton tha
 ## 10. [Tween Template](TweenTemplate/README.md)
 
 This project covers tweens, and their uses in Godot. Many of the work was taken from [cristophe's interactive tween guide](https://qaqelol.itch.io/tweens)
+
+## 11. [Signal Event Bus](EventBusSignals/README.md)
+
+This project showcases a singleton event bus for all signals. It makes connecting varous signals across scenes much easier to manage.
