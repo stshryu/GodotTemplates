@@ -14,6 +14,8 @@ This project has two separate scenes: `scene_1` and `scene_2`.
 
 ## Producer Code
 
+This code lives in a script attached to `scene_1`
+
 ```
 func _on_button_pressed() -> void:
 	EventBus.emit_signal("turn_ended")
@@ -21,6 +23,8 @@ func _on_button_pressed() -> void:
 ```
 
 ## Consumer Code
+
+This code lives in a script attached to `scene_2`
 
 ```
 func _ready() -> void:
