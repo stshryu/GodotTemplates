@@ -57,3 +57,8 @@ This project covers tweens, and their uses in Godot. Many of the work was taken 
 ## 11. [Signal Event Bus](EventBusSignals/README.md)
 
 This project showcases a singleton event bus for all signals. It makes connecting varous signals across scenes much easier to manage.
+
+## 12. [Various Scripts and Tips](VariousScripts/README.md)
+
+This collection of GDScript files goes over random bits of knowledge gathered on how to navigate GDScript and the Godot engine.
+
