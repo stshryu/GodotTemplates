@@ -62,3 +62,8 @@ This project showcases a singleton event bus for all signals. It makes connectin
 
 This collection of GDScript files goes over random bits of knowledge gathered on how to navigate GDScript and the Godot engine.
 
+## 13. [Card Game Template](CardGameTemplate/README.md)
+
+A template that holds the basic systems for a card game/deckbuilder. The cards should be selectable, should be able to move around in hand, as well as a generalized draw/discard pile, as well as stack effects on top of each other.
+
+The cards themselves needs to be easily creatable (reading from a human-friendly data store) that can be edited quickly without writing code.
