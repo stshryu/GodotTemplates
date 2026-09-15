@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://ccu0v6l75kgt0"]
+
+[ext_resource type="Script" uid="uid://31d3cr1ernsx" path="res://card_data.gd" id="1_2ngap"]
+
+[resource]
+script = ExtResource("1_2ngap")
+card_name = "Draw"
+description = "Draw 1 Card"
+attack = 0
+effect = 2
+metadata/_custom_type_script = "uid://31d3cr1ernsx"
