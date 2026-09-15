@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="CardGameTemplate"
+run/main_scene="uid://bragk8creyxun"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*uid://cvp730fw8jptu"
 
 [physics]
 
