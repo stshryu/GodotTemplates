@@ -98,6 +98,15 @@ In our code block for `_can_drop_data()` we have a truthy statement that checks 
 
 The `_drop_data()` function creates a card instance from the data we received, and emits a signal letting the engine know a valid card has been dragged and dropped in a valid location.
 
+Also an important note, in the project you'll see that the play area also gave a unique identifier to the `PlayAreaBackground` ColorRect, and in the `_ready()` function, we set the `mouse_filter = Control.MOUSE_FILTER_PASS`.
+
+Normally, anything we render inside of the `PlayArea` control zone will be rendered underneath any children controls. This means when we drag the card onto the play zone, it won't register as a valid drag and drop state because the background control node is eating the mouse input.
+
+`MOUSE_FILTER_PASS` then will tell the child node to ignore any click events (or drag and drop events) and pass them up into the parent node where our play area can handle that logic.
+
+This can also be changed in the inspector:
+
+![mousefilterexample](../images/mouse_filter_example.png)
 #### GameEngine
 
 ```
